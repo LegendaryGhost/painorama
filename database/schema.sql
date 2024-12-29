@@ -4,6 +4,9 @@ CREATE DATABASE painorama;
 -- Connexion à la base de données
 \c painorama;
 
+-- Extension de hachage Postgres
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 -- Table des ingrédients
 CREATE TABLE ingredient
 (
@@ -15,7 +18,7 @@ CREATE TABLE ingredient
     seuil_alerte   NUMERIC(10, 2) NOT NULL            -- Seuil pour les alertes
 );
 
--- Table des produit
+-- Table des produits
 CREATE TABLE produit
 (
     id           SERIAL PRIMARY KEY,
@@ -24,7 +27,7 @@ CREATE TABLE produit
     cout_revient NUMERIC(10, 2) NOT NULL DEFAULT 0 -- Calculé à partir des recette
 );
 
--- Table des recette (relation ingrédients -> produit)
+-- Table des recettes (relation ingrédients -> produit)
 CREATE TABLE recette
 (
     id               SERIAL PRIMARY KEY,
@@ -33,7 +36,7 @@ CREATE TABLE recette
     quantite_requise NUMERIC(10, 2) NOT NULL -- Quantité d'ingrédient nécessaire
 );
 
--- Table des production
+-- Table des productions
 CREATE TABLE statut_production
 (
     id  SERIAL PRIMARY KEY,
@@ -60,7 +63,7 @@ CREATE TABLE mouvement_stock
     date_mouvement  TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- Table des utilisateur
+-- Table des utilisateurs
 CREATE TABLE utilisateur
 (
     id           SERIAL PRIMARY KEY,
