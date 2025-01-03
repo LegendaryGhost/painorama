@@ -6,7 +6,8 @@
 </head>
 <body>
     <main>
-        <h1>Bienvenu dans Painorama !</h1>
+        <h1>Bienvenue dans Painorama, <span th:text="${utilisateur.nom}">Utilisateur</span>!</h1>
+        <a href="/logout">Se déconnecter</a>
     </main>
 </body>
 </html>

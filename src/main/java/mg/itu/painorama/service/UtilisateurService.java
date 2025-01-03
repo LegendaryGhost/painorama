@@ -12,14 +12,14 @@ public class UtilisateurService {
 
     private final UtilisateurRepository utilisateurRepository;
 
-    public boolean authenticate(LoginRequest loginRequest) {
+    public Utilisateur findByEmailAndPassword(LoginRequest loginRequest) {
 	Utilisateur utilisateur = utilisateurRepository.findByEmail(loginRequest.getEmail());
 
-	if (utilisateur != null) {
-	    // Vérifie le mot de passe avec la fonction crypt de PostgreSQL
-	    return utilisateurRepository.isPasswordCorrect(loginRequest.getEmail(), loginRequest.getMotDePasse());
+	if (utilisateur != null && utilisateurRepository.isPasswordCorrect(loginRequest.getEmail(), loginRequest.getMotDePasse())) {
+	    return utilisateur;
 	}
 
-	return false;
+	return null;
     }
+
 }
