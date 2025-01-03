@@ -16,17 +16,17 @@ public class Ingredient {
     @Column(name = "nom", nullable = false, length = 100)
     private String nom;
 
-    @Column(name = "prix_achat", nullable = false, precision = 10, scale = 2)
+    @Column(name = "prix_achat", nullable = false)
     private Double prixAchat;
 
     @ColumnDefault("0")
-    @Column(name = "quantite_stock", nullable = false, precision = 10, scale = 2)
+    @Column(name = "quantite_stock", nullable = false)
     private Double quantiteStock;
 
     @Column(name = "unite", nullable = false, length = 20)
     private String unite;
 
-    @Column(name = "seuil_alerte", nullable = false, precision = 10, scale = 2)
+    @Column(name = "seuil_alerte", nullable = false)
     private Double seuilAlerte;
 
 }

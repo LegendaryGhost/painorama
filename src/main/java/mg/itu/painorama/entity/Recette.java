@@ -24,7 +24,7 @@ public class Recette {
     @JoinColumn(name = "id_ingredient", nullable = false)
     private Ingredient idIngredient;
 
-    @Column(name = "quantite_requise", nullable = false, precision = 10, scale = 2)
+    @Column(name = "quantite_requise", nullable = false)
     private Double quantiteRequise;
 
 }

@@ -16,11 +16,11 @@ public class Produit {
     @Column(name = "nom", nullable = false, length = 100)
     private String nom;
 
-    @Column(name = "prix_vente", nullable = false, precision = 10, scale = 2)
+    @Column(name = "prix_vente", nullable = false)
     private Double prixVente;
 
     @ColumnDefault("0")
-    @Column(name = "cout_revient", nullable = false, precision = 10, scale = 2)
+    @Column(name = "cout_revient", nullable = false)
     private Double coutRevient;
 
 }

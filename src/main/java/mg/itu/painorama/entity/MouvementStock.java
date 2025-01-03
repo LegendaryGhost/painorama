@@ -28,11 +28,11 @@ public class MouvementStock {
     private Produit idProduit;
 
     @ColumnDefault("0")
-    @Column(name = "quantite_entree", nullable = false, precision = 10, scale = 2)
+    @Column(name = "quantite_entree", nullable = false)
     private Double quantiteEntree;
 
     @ColumnDefault("0")
-    @Column(name = "quantite_sortie", nullable = false, precision = 10, scale = 2)
+    @Column(name = "quantite_sortie", nullable = false)
     private Double quantiteSortie;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
