@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Liste des Ingrédients</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Liste des Ingrédients</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prix d'Achat</th>
+            <th>Quantité en Stock</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ingredient : ${ingredients}">
+            <td th:text="${ingredient.nom}"></td>
+            <td th:text="${ingredient.prixAchat} + ' €'"></td>
+            <td th:text="${ingredient.quantiteStock} + ' ' + ${ingredient.unite}"></td>
+            <td>
+                <a th:href="@{/ingredients/fiche/{id}(id=${ingredient.id})}" class="btn btn-primary btn-sm">Voir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+</body>
+</html>

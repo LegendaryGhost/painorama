@@ -21,12 +21,11 @@ public class IngredientController {
     private final IngredientService ingredientService;
     private final MouvementStockService mouvementStockService;
 
-    @GetMapping("/fiche")
-    public String fiche() {
-	return "accueil";
+    @GetMapping
+    public String listIngredients(Model model) {
+	model.addAttribute("ingredients", ingredientService.findAll());
+	return "ingredients/liste"; // Vue pour la liste
     }
-
-
 
     @GetMapping("/fiche/{id}")
     public String showIngredientFiche(@PathVariable Integer id, Model model) {

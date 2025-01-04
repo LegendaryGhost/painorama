@@ -30,7 +30,7 @@ public class AuthenticationController {
 	if (utilisateur != null) {
 	    // Stocker l'utilisateur dans la session HTTP
 	    session.setAttribute("utilisateur", utilisateur);
-	    return "redirect:/ingredients/fiche";
+	    return "redirect:/ingredients";
 	} else {
 	    model.addAttribute("error", "Email ou mot de passe incorrect.");
 	    return "login";
