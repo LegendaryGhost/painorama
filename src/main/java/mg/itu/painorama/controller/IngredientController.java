@@ -7,9 +7,7 @@ import mg.itu.painorama.service.IngredientService;
 import mg.itu.painorama.service.MouvementStockService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,6 +34,18 @@ public class IngredientController {
 	model.addAttribute("mouvements", mouvements);
 
 	return "ingredients/fiche";
+    }
+
+    @GetMapping("/ajout")
+    public String showAddIngredientForm(Model model) {
+	model.addAttribute("ingredient", new Ingredient());
+	return "ingredients/formulaire";
+    }
+
+    @PostMapping("/sauvegarder")
+    public String addIngredient(@ModelAttribute Ingredient ingredient) {
+	ingredientService.save(ingredient);
+	return "redirect:/ingredients";
     }
 
 }

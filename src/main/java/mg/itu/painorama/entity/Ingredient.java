@@ -21,7 +21,7 @@ public class Ingredient {
 
     @ColumnDefault("0")
     @Column(name = "quantite_stock", nullable = false)
-    private Double quantiteStock;
+    private Double quantiteStock = 0.0;
 
     @Column(name = "unite", nullable = false, length = 20)
     private String unite;

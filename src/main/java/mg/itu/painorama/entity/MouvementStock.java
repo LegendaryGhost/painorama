@@ -29,14 +29,14 @@ public class MouvementStock {
 
     @ColumnDefault("0")
     @Column(name = "quantite_entree", nullable = false)
-    private Double quantiteEntree;
+    private Double quantiteEntree = 0.0;
 
     @ColumnDefault("0")
     @Column(name = "quantite_sortie", nullable = false)
-    private Double quantiteSortie;
+    private Double quantiteSortie = 0.0;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "date_mouvement", nullable = false)
-    private LocalDateTime dateMouvement;
+    private LocalDateTime dateMouvement = LocalDateTime.now();
 
 }
