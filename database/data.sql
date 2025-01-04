@@ -6,16 +6,16 @@ VALUES ('Jean Dupont', 'jean.dupont@example.com', crypt('mdp_jean123', gen_salt(
        ('Alan Turing', 'alan.turing@example.com', crypt('mdp_alan345', gen_salt('bf')), FALSE);
 
 INSERT INTO ingredient (nom, prix_achat, quantite_stock, unite, seuil_alerte)
-VALUES ('Farine', 1.20, 100.00, 'kg', 20.00),
-       ('Sucre', 0.80, 50.00, 'kg', 10.00),
-       ('Beurre', 2.50, 30.00, 'kg', 5.00),
-       ('Lait', 0.60, 200.00, 'L', 50.00),
-       ('Levure', 0.10, 5.00, 'kg', 1.00),
-       ('Œufs', 0.15, 300.00, 'pièces', 50.00),
-       ('Chocolat', 3.00, 20.00, 'kg', 5.00),
-       ('Sel', 0.50, 15.00, 'kg', 3.00),
-       ('Crème', 1.80, 25.00, 'L', 5.00),
-       ('Vanille', 5.00, 2.00, 'kg', 0.50);
+VALUES ('Farine', 1.20, 30.00, 'kg', 20.00),
+       ('Sucre', 0.80, 15.00, 'kg', 10.00),
+       ('Beurre', 2.50, 5.00, 'kg', 5.00),
+       ('Lait', 0.60, 50.00, 'L', 50.00),
+       ('Levure', 0.10, 1.50, 'kg', 1.00),
+       ('Œufs', 0.15, 20.00, 'pièces', 50.00),
+       ('Chocolat', 3.00, 7.00, 'kg', 5.00),
+       ('Sel', 0.50, 3.00, 'kg', 3.00),
+       ('Crème', 1.80, 8.00, 'L', 5.00),
+       ('Vanille', 5.00, 1.50, 'kg', 0.50);
 
 INSERT INTO mouvement_stock (id_ingredient, id_produit, quantite_entree, quantite_sortie, date_mouvement)
 VALUES
