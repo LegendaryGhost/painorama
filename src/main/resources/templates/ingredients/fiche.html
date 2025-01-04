@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Ingrédient</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h3>Fiche Ingrédient</h3>
+        </div>
+        <div class="card-body">
+            <!-- Informations de base -->
+            <h5>Informations générales</h5>
+            <p><strong>Nom :</strong> <span th:text="${ingredient.nom}"></span></p>
+            <p><strong>Prix d'achat :</strong> <span th:text="${ingredient.prixAchat}"></span> €</p>
+            <p><strong>Quantité en stock :</strong> <span th:text="${ingredient.quantiteStock}"></span>
+                <span th:text="${ingredient.unite}"></span></p>
+            <p><strong>Seuil d'alerte :</strong> <span th:text="${ingredient.seuilAlerte}"></span>
+                <span th:text="${ingredient.unite}"></span></p>
+
+            <!-- Actions -->
+            <h5 class="mt-4">Actions</h5>
+            <div class="btn-group">
+                <a th:href="@{/ingredients/edit/{id}(id=${ingredient.id})}" class="btn btn-warning">Modifier</a>
+                <a th:href="@{/ingredients/delete/{id}(id=${ingredient.id})}" class="btn btn-danger">Supprimer</a>
+                <a th:href="@{/ingredients/addStock/{id}(id=${ingredient.id})}" class="btn btn-success">Ajouter au stock</a>
+            </div>
+
+            <!-- Historique des mouvements de stock -->
+            <h5 class="mt-4">Historique des mouvements</h5>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Entrée</th>
+                    <th>Sortie</th>
+                    <th>Produit ou ingrédient associé</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="mouvement : ${mouvements}">
+                    <td th:text="${mouvement.dateMouvement}"></td>
+                    <td th:text="${mouvement.quantiteEntree}"></td>
+                    <td th:text="${mouvement.quantiteSortie}"></td>
+                    <td>
+                        <span th:if="${mouvement.produit != null}" th:text="${mouvement.produit.nom}"></span>
+                        <span th:if="${mouvement.ingredient != null}" th:text="${mouvement.ingredient.nom}"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

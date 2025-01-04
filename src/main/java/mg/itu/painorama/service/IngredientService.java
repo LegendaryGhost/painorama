@@ -1,0 +1,20 @@
+package mg.itu.painorama.service;
+
+import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
+import mg.itu.painorama.entity.Ingredient;
+import mg.itu.painorama.repository.IngredientRepository;
+import org.springframework.stereotype.Service;
+
+@AllArgsConstructor
+@Service
+public class IngredientService {
+
+    private final IngredientRepository ingredientRepository;
+
+    public Ingredient findById(Integer id) {
+	return ingredientRepository.findById(id)
+		.orElseThrow(() -> new EntityNotFoundException("Ingrédient introuvable avec l'ID " + id));
+    }
+
+}

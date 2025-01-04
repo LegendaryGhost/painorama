@@ -20,12 +20,12 @@ public class MouvementStock {
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.SET_NULL)
     @JoinColumn(name = "id_ingredient")
-    private Ingredient idIngredient;
+    private Ingredient ingredient;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.SET_NULL)
     @JoinColumn(name = "id_produit")
-    private Produit idProduit;
+    private Produit produit;
 
     @ColumnDefault("0")
     @Column(name = "quantite_entree", nullable = false)

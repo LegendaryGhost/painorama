@@ -23,7 +23,7 @@ public class Production {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_produit", nullable = false)
-    private Produit idProduit;
+    private Produit produit;
 
     @Column(name = "quantite_produite", nullable = false)
     private Integer quantiteProduite;
@@ -31,6 +31,6 @@ public class Production {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @ColumnDefault("1")
     @JoinColumn(name = "id_statut_production", nullable = false)
-    private StatutProduction idStatutProduction;
+    private StatutProduction statutProduction;
 
 }
