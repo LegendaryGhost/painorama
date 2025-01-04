@@ -7,7 +7,10 @@
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
-<div class="container mt-5">
+
+<header th:include="fragments/navbar"></header>
+
+<main class="container mt-5">
     <div class="card">
         <div class="card-header bg-primary text-white">
             <h3>Fiche Ingrédient</h3>
@@ -55,7 +58,9 @@
             </table>
         </div>
     </div>
-</div>
+</main>
+
 <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
 </body>
 </html>

@@ -5,7 +5,10 @@
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
 </head>
 <body>
-<div class="container mt-4">
+
+<header th:include="fragments/navbar"></header>
+
+<main class="container mt-4">
     <h1>Liste des Ingrédients</h1>
     <table class="table table-striped">
         <thead>
@@ -27,7 +30,9 @@
         </tr>
         </tbody>
     </table>
-</div>
+</main>
+
 <script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+
 </body>
 </html>
