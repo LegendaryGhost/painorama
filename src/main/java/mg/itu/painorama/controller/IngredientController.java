@@ -20,13 +20,13 @@ public class IngredientController {
     private final MouvementStockService mouvementStockService;
 
     @GetMapping
-    public String listIngredients(Model model) {
+    public String listeIngredients(Model model) {
 	model.addAttribute("ingredients", ingredientService.findAll());
 	return "ingredients/liste"; // Vue pour la liste
     }
 
     @GetMapping("/fiche/{id}")
-    public String showIngredientFiche(@PathVariable Integer id, Model model) {
+    public String ficheIngredient(@PathVariable("id") Integer id, Model model) {
 	Ingredient ingredient = ingredientService.findById(id);
 	List<MouvementStock> mouvements = mouvementStockService.findByIngredientId(id);
 
@@ -36,15 +36,35 @@ public class IngredientController {
 	return "ingredients/fiche";
     }
 
-    @GetMapping("/ajout")
-    public String showAddIngredientForm(Model model) {
+    @GetMapping("/ajouter")
+    public String ajouterIngredient(Model model) {
 	model.addAttribute("ingredient", new Ingredient());
+	model.addAttribute("titrePage", "Ajouter un ingrédient");
+	model.addAttribute("texteBouton", "Ajouter");
+	return "ingredients/formulaire";
+    }
+
+    @GetMapping("/modifier/{id}")
+    public String modifierIngredient(@PathVariable("id") Integer id, Model model) {
+	model.addAttribute("ingredient", ingredientService.findById(id));
+	model.addAttribute("titrePage", "Modifier un ingredient");
+	model.addAttribute("texteBouton", "Modifier");
 	return "ingredients/formulaire";
     }
 
     @PostMapping("/sauvegarder")
-    public String addIngredient(@ModelAttribute Ingredient ingredient) {
-	ingredientService.save(ingredient);
+    public String sauvegarderIngredient(@ModelAttribute Ingredient ingredient) {
+	if (ingredient.getId() == null) {
+	    ingredientService.create(ingredient);
+	} else {
+	    ingredientService.update(ingredient);
+	}
+	return "redirect:/ingredients";
+    }
+
+    @GetMapping("/effacer/{id}")
+    public String effacerIngredient(@PathVariable("id") Integer id) {
+	ingredientService.delete(id);
 	return "redirect:/ingredients";
     }
 

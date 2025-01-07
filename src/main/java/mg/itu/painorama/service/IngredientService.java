@@ -26,7 +26,7 @@ public class IngredientService {
 		.orElseThrow(() -> new EntityNotFoundException("Ingrédient introuvable avec l'ID " + id));
     }
 
-    public void save(Ingredient ingredient) {
+    public void create(Ingredient ingredient) {
 	ingredientRepository.save(ingredient);
 
 	if (ingredient.getQuantiteStock() != 0) {
@@ -37,4 +37,11 @@ public class IngredientService {
 	}
     }
 
+    public void update(Ingredient ingredient) {
+	ingredientRepository.save(ingredient);
+    }
+
+    public void delete(Integer id) {
+	ingredientRepository.deleteById(id);
+    }
 }

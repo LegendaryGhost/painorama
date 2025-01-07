@@ -28,8 +28,8 @@
             <!-- Actions -->
             <h5 class="mt-4">Actions</h5>
             <div class="btn-group">
-                <a th:href="@{/ingredients/edit/{id}(id=${ingredient.id})}" class="btn btn-warning">Modifier</a>
-                <a th:href="@{/ingredients/delete/{id}(id=${ingredient.id})}" class="btn btn-danger">Supprimer</a>
+                <a th:href="@{/ingredients/modifier/{id}(id=${ingredient.id})}" class="btn btn-warning">Modifier</a>
+                <a th:href="@{/ingredients/effacer/{id}(id=${ingredient.id})}" class="btn btn-danger">Supprimer</a>
                 <a th:href="@{/ingredients/addStock/{id}(id=${ingredient.id})}" class="btn btn-success">Ajouter au stock</a>
             </div>
 

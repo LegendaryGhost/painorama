@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter un Ingrédient</title>
+    <title th:text="${titrePage}"></title>
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
@@ -11,8 +11,10 @@
 
 <!-- Contenu Principal -->
 <main class="container mt-4">
-    <h2>Ajouter un Ingrédient</h2>
+    <h2 th:text="${titrePage}"></h2>
     <form th:action="@{/ingredients/sauvegarder}" th:object="${ingredient}" method="post" class="mt-4">
+        <input type="hidden" name="id" th:field="*{id}">
+
         <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>
             <input type="text" id="nom" th:field="*{nom}" class="form-control" placeholder="Nom de l'ingrédient"
@@ -38,7 +40,7 @@
             <input type="number" id="seuilAlerte" th:field="*{seuilAlerte}" step="0.01" class="form-control"
                    placeholder="Seuil d'alerte" required>
         </div>
-        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <button type="submit" class="btn btn-primary" th:text="${texteBouton}"></button>
     </form>
 </main>
 
