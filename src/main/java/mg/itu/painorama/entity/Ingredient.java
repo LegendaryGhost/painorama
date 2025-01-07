@@ -2,7 +2,6 @@ package mg.itu.painorama.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 
 @Data
 @Entity
@@ -18,10 +17,6 @@ public class Ingredient {
 
     @Column(name = "prix_achat", nullable = false)
     private Double prixAchat;
-
-    @ColumnDefault("0")
-    @Column(name = "quantite_stock", nullable = false)
-    private Double quantiteStock = 0.0;
 
     @Column(name = "unite", nullable = false, length = 20)
     private String unite;

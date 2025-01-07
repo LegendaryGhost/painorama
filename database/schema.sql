@@ -7,15 +7,20 @@ CREATE DATABASE painorama;
 -- Extension de hachage Postgres
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
+CREATE TABLE unite
+(
+    id  SERIAL PRIMARY KEY,
+    nom VARCHAR(100) UNIQUE NOT NULL
+);
+
 -- Table des ingrédients
 CREATE TABLE ingredient
 (
-    id             SERIAL PRIMARY KEY,
-    nom            VARCHAR(100)   NOT NULL,
-    prix_achat     NUMERIC(10, 2) NOT NULL,
-    quantite_stock NUMERIC(10, 2) NOT NULL DEFAULT 0, -- Quantité actuelle
-    unite          VARCHAR(20)    NOT NULL,           -- Unité de mesure (ex: kg, L)
-    seuil_alerte   NUMERIC(10, 2) NOT NULL            -- Seuil pour les alertes
+    id           SERIAL PRIMARY KEY,
+    nom          VARCHAR(100)   NOT NULL,
+    prix_achat   NUMERIC(10, 2) NOT NULL,
+    id_unite     INT            NOT NULL REFERENCES unite (id) ON DELETE CASCADE, -- Unité de mesure (ex: kg, L)
+    seuil_alerte NUMERIC(10, 2) NOT NULL                                          -- Seuil pour les alertes
 );
 
 -- Table des produits
