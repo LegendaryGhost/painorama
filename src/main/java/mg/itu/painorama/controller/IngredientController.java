@@ -5,6 +5,7 @@ import mg.itu.painorama.entity.Ingredient;
 import mg.itu.painorama.entity.MouvementStock;
 import mg.itu.painorama.service.IngredientService;
 import mg.itu.painorama.service.MouvementStockService;
+import mg.itu.painorama.service.UniteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ public class IngredientController {
 
     private final IngredientService ingredientService;
     private final MouvementStockService mouvementStockService;
+    private final UniteService uniteService;
 
     @GetMapping
     public String listeIngredients(Model model) {
@@ -39,6 +41,7 @@ public class IngredientController {
     @GetMapping("/ajouter")
     public String ajouterIngredient(Model model) {
 	model.addAttribute("ingredient", new Ingredient());
+	model.addAttribute("unites", uniteService.findAll());
 	model.addAttribute("titrePage", "Ajouter un ingrédient");
 	model.addAttribute("texteBouton", "Ajouter");
 	return "ingredients/formulaire";
@@ -47,6 +50,7 @@ public class IngredientController {
     @GetMapping("/modifier/{id}")
     public String modifierIngredient(@PathVariable("id") Integer id, Model model) {
 	model.addAttribute("ingredient", ingredientService.findById(id));
+	model.addAttribute("unites", uniteService.findAll());
 	model.addAttribute("titrePage", "Modifier un ingredient");
 	model.addAttribute("texteBouton", "Modifier");
 	return "ingredients/formulaire";

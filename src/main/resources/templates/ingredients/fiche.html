@@ -20,9 +20,9 @@
             <h5>Informations générales</h5>
             <p><strong>Nom :</strong> <span th:text="${ingredient.nom}"></span></p>
             <p><strong>Prix d'achat :</strong> <span th:text="${ingredient.prixAchat}"></span> €</p>
-            <p><strong>Unité :</strong> <span th:text="${ingredient.unite}"></span></p>
+            <p><strong>Unité :</strong> <span th:text="${ingredient.unite.nom}"></span></p>
             <p><strong>Seuil d'alerte :</strong> <span th:text="${ingredient.seuilAlerte}"></span>
-                <span th:text="${ingredient.unite}"></span></p>
+                <span th:text="${ingredient.unite.nom}"></span></p>
 
             <!-- Actions -->
             <h5 class="mt-4">Actions</h5>

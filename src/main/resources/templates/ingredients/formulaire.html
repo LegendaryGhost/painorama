@@ -26,14 +26,10 @@
                    placeholder="Prix d'achat" required>
         </div>
         <div class="mb-3">
-            <label for="quantiteStock" class="form-label">Quantité en Stock</label>
-            <input type="number" id="quantiteStock" th:field="*{quantiteStock}" step="0.01" class="form-control"
-                   placeholder="Quantité en stock" required>
-        </div>
-        <div class="mb-3">
             <label for="unite" class="form-label">Unité</label>
-            <input type="text" id="unite" th:field="*{unite}" class="form-control" placeholder="Unité (ex: kg, L)"
-                   required>
+            <select class="form-select" name="unite" id="unite" th:field="*{unite}" required>
+                <option th:each="unite : ${unites}" th:value="${unite.id}" th:text="${unite.nom}"></option>
+            </select>
         </div>
         <div class="mb-3">
             <label for="seuilAlerte" class="form-label">Seuil d'Alerte</label>

@@ -18,15 +18,13 @@
         <tr>
             <th>Nom</th>
             <th>Prix d'Achat</th>
-            <th>Quantité en Stock</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="ingredient : ${ingredients}">
             <td th:text="${ingredient.nom}"></td>
-            <td th:text="${ingredient.prixAchat} + ' €'"></td>
-            <td th:text="${ingredient.quantiteStock} + ' ' + ${ingredient.unite}"></td>
+            <td th:text="${ingredient.prixAchat} + ' Ar'"></td>
             <td>
                 <a th:href="@{/ingredients/fiche/{id}(id=${ingredient.id})}" class="btn btn-primary btn-sm">Voir</a>
             </td>
