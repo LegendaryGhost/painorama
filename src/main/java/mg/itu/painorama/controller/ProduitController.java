@@ -31,6 +31,15 @@ public class ProduitController {
         return "produits/formulaire";
     }
 
+    @GetMapping("/modifier/{id}")
+    public String modifierProduit(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("produit", produitService.findById(id));
+        model.addAttribute("categories", categorieService.findAll());
+        model.addAttribute("titrePage", "Modifier un produit");
+        model.addAttribute("texteBouton", "Modifier");
+        return "produits/formulaire";
+    }
+
     @PostMapping("/sauvegarder")
     public String sauvegarderProduit(@ModelAttribute Produit produit) {
         if (produit.getId() == null) {

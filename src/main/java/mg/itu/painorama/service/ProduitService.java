@@ -28,4 +28,8 @@ public class ProduitService {
     public void delete(Integer id) {
 	produitRepository.deleteById(id);
     }
+
+    public Produit findById(Integer id) {
+	return produitRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Produit introuvable"));
+    }
 }
