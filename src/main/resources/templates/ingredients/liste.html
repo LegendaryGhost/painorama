@@ -27,6 +27,8 @@
             <td th:text="${ingredient.prixAchat} + ' Ar'"></td>
             <td>
                 <a th:href="@{/ingredients/fiche/{id}(id=${ingredient.id})}" class="btn btn-primary btn-sm">Voir</a>
+                <a th:href="@{/ingredients/modifier/{id}(id=${ingredient.id})}" class="btn btn-warning btn-sm">Modifier</a>
+                <a th:href="@{/ingredients/effacer/{id}(id=${ingredient.id})}" class="btn btn-danger btn-sm">Effacer</a>
             </td>
         </tr>
         </tbody>

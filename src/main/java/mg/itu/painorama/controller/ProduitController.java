@@ -6,10 +6,7 @@ import mg.itu.painorama.service.CategorieService;
 import mg.itu.painorama.service.ProduitService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RequestMapping("/produits")
@@ -41,6 +38,12 @@ public class ProduitController {
         } else {
             produitService.update(produit);
         }
+        return "redirect:/produits";
+    }
+
+    @GetMapping("/effacer/{id}")
+    public String effacerProduit(@PathVariable Integer id) {
+        produitService.delete(id);
         return "redirect:/produits";
     }
 
