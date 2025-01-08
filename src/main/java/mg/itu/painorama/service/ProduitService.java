@@ -17,4 +17,12 @@ public class ProduitService {
 	return produitRepository.findAll();
     }
 
+    public void create(Produit produit) {
+	produitRepository.save(produit);
+    }
+
+    public void update(Produit produit) {
+	produitRepository.save(produit);
+    }
+
 }
