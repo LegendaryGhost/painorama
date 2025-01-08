@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Liste des Produits</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+</head>
+<body>
+
+<header th:include="fragments/navbar"></header>
+
+<main class="container mt-4">
+    <h1>Liste des Produits</h1>
+    <div>
+        <a class="btn btn-success" th:href="@{/produits/ajouter}">Ajouter</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Catégorie</th>
+            <th>Prix de vente</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="produit : ${produits}">
+            <td th:text="${produit.nom}"></td>
+            <td th:text="${produit.categorie.nom}"></td>
+            <td th:text="${produit.prixVente} + ' Ar'"></td>
+            <td>
+                <a th:href="@{/produits/fiche/{id}(id=${produit.id})}" class="btn btn-primary btn-sm">Voir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+
+</body>
+</html>

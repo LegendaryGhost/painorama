@@ -54,3 +54,78 @@ VALUES
     -- Mouvements pour l'ingrédient 10 (Vanille)
     (10, NULL, 2.00, 0.00, '2024-12-18 13:15:00'),
     (10, NULL, 0.00, 0.50, '2024-12-21 17:45:00');
+
+INSERT INTO categorie (nom)
+VALUES ('Viennoiserie'),
+       ('Pâtisserie'),
+       ('Pain'),
+       ('Gâteau');
+
+INSERT INTO produit (nom, prix_vente, id_categorie)
+VALUES ('Croissant', 2000, 1),
+       ('Pain au chocolat', 2500, 1),
+       ('Baguette', 1500, 3),
+       ('Pain complet', 2000, 3),
+       ('Éclair au chocolat', 3500, 2),
+       ('Tarte aux pommes', 4500, 2),
+       ('Mille-feuille', 5000, 2),
+       ('Opéra', 6000, 4);
+
+INSERT INTO recette (quantite_requise, id_produit, id_ingredient)
+VALUES
+    -- Croissant
+    (0.25, 1, 1), -- 0.25 kg de Farine
+    (0.1, 1, 2),  -- 0.1 kg de Sucre
+    (0.2, 1, 3),  -- 0.2 kg de Beurre
+    (0.1, 1, 4),  -- 0.1 L de Lait
+    (0.05, 1, 5), -- 0.05 kg de Levure
+    (1, 1, 6),    -- 1 Œuf
+
+    -- Pain au chocolat
+    (0.25, 2, 1), -- 0.25 kg de Farine
+    (0.1, 2, 2),  -- 0.1 kg de Sucre
+    (0.2, 2, 3),  -- 0.2 kg de Beurre
+    (0.1, 2, 4),  -- 0.1 L de Lait
+    (0.05, 2, 5), -- 0.05 kg de Levure
+    (1, 2, 6),    -- 1 Œuf
+    (0.05, 2, 7), -- 0.05 kg de Chocolat
+
+    -- Baguette
+    (0.3, 3, 1),  -- 0.3 kg de Farine
+    (0.01, 3, 8), -- 0.01 kg de Sel
+    (0.1, 3, 5),  -- 0.1 kg de Levure
+
+    -- Pain complet
+    (0.3, 4, 1),  -- 0.3 kg de Farine
+    (0.01, 4, 8), -- 0.01 kg de Sel
+    (0.1, 4, 5),  -- 0.1 kg de Levure
+
+    -- Éclair au chocolat
+    (0.2, 5, 1),  -- 0.2 kg de Farine
+    (0.1, 5, 2),  -- 0.1 kg de Sucre
+    (0.15, 5, 3), -- 0.15 kg de Beurre
+    (0.1, 5, 4),  -- 0.1 L de Lait
+    (1, 5, 6),    -- 1 Œuf
+    (0.05, 5, 7), -- 0.05 kg de Chocolat
+
+    -- Tarte aux pommes
+    (0.3, 6, 1),  -- 0.3 kg de Farine
+    (0.15, 6, 2), -- 0.15 kg de Sucre
+    (0.2, 6, 3),  -- 0.2 kg de Beurre
+    (0.1, 6, 4),  -- 0.1 L de Lait
+    (2, 6, 6),    -- 2 Œufs
+
+    -- Mille-feuille
+    (0.3, 7, 1),  -- 0.3 kg de Farine
+    (0.2, 7, 2),  -- 0.2 kg de Sucre
+    (0.3, 7, 3),  -- 0.3 kg de Beurre
+    (0.2, 7, 9),  -- 0.2 L de Crème
+
+    -- Opéra
+    (0.3, 8, 1),  -- 0.3 kg de Farine
+    (0.2, 8, 2),  -- 0.2 kg de Sucre
+    (0.3, 8, 3),  -- 0.3 kg de Beurre
+    (0.2, 8, 9),  -- 0.2 L de Crème
+    (0.1, 8, 7),  -- 0.1 kg de Chocolat
+    (0.05, 8, 10); -- 0.05 kg de Vanille
+

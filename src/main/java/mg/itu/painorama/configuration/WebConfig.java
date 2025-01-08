@@ -16,6 +16,8 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
 	// Applique l'intercepteur sur les routes protégées
 	registry.addInterceptor(authenticationInterceptor)
+		.addPathPatterns("/produits/**")
+		.addPathPatterns("/productions/**")
 		.addPathPatterns("/ingredients/**"); // Applique à toutes les routes sous "/ingredients/"
     }
 }

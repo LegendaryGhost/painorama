@@ -18,4 +18,8 @@ public class Produit {
     @Column(name = "prix_vente", nullable = false)
     private Double prixVente;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_categorie", nullable = false)
+    private Categorie categorie;
+
 }

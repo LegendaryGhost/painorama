@@ -25,12 +25,39 @@ CREATE TABLE ingredient
     FOREIGN KEY (id_unite) REFERENCES unite (id_unite)
 );
 
+CREATE TABLE statut_production
+(
+    id_statut_production SERIAL,
+    nom                  VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id_statut_production)
+);
+
+CREATE TABLE utilisateur
+(
+    id_utilisateur SERIAL,
+    nom            VARCHAR(255),
+    email          VARCHAR(255) NOT NULL,
+    mot_de_passe   VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_utilisateur),
+    UNIQUE (email)
+);
+
+CREATE TABLE categorie
+(
+    id_categorie SERIAL,
+    nom          VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_categorie),
+    UNIQUE (nom)
+);
+
 CREATE TABLE produit
 (
-    id_produit SERIAL,
-    nom        VARCHAR(255)   NOT NULL,
-    prix_vente NUMERIC(15, 2) NOT NULL,
-    PRIMARY KEY (id_produit)
+    id_produit   SERIAL,
+    nom          VARCHAR(255)   NOT NULL,
+    prix_vente   NUMERIC(15, 2) NOT NULL,
+    id_categorie INTEGER        NOT NULL,
+    PRIMARY KEY (id_produit),
+    FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie)
 );
 
 CREATE TABLE recette
@@ -42,13 +69,6 @@ CREATE TABLE recette
     PRIMARY KEY (id_recette),
     FOREIGN KEY (id_produit) REFERENCES produit (id_produit),
     FOREIGN KEY (id_ingredient) REFERENCES ingredient (id_ingredient)
-);
-
-CREATE TABLE statut_production
-(
-    id_statut_production SERIAL,
-    nom                  VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id_statut_production)
 );
 
 CREATE TABLE mouvement_stock
@@ -74,14 +94,4 @@ CREATE TABLE production
     PRIMARY KEY (id_production),
     FOREIGN KEY (id_produit) REFERENCES produit (id_produit),
     FOREIGN KEY (id_statut_production) REFERENCES statut_production (id_statut_production)
-);
-
-CREATE TABLE utilisateur
-(
-    id_utilisateur SERIAL,
-    nom            VARCHAR(255),
-    email          VARCHAR(255) NOT NULL,
-    mot_de_passe   VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id_utilisateur),
-    UNIQUE (email)
 );
