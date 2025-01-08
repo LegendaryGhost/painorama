@@ -2,7 +2,6 @@ package mg.itu.painorama.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 
 @Data
 @Entity
@@ -10,20 +9,16 @@ import org.hibernate.annotations.ColumnDefault;
 public class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id_utilisateur", nullable = false)
     private Integer id;
 
-    @Column(name = "nom", nullable = false, length = 100)
+    @Column(name = "nom", nullable = false)
     private String nom;
 
-    @Column(name = "email", nullable = false, length = 100)
+    @Column(name = "email", nullable = false)
     private String email;
 
     @Column(name = "mot_de_passe", nullable = false)
     private String motDePasse;
-
-    @ColumnDefault("false")
-    @Column(name = "est_admin", nullable = false)
-    private Boolean estAdmin = false;
 
 }

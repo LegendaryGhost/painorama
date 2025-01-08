@@ -9,76 +9,79 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 CREATE TABLE unite
 (
-    id  SERIAL PRIMARY KEY,
-    nom VARCHAR(100) UNIQUE NOT NULL
+    id_unite SERIAL,
+    nom      VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id_unite),
+    UNIQUE (nom)
 );
 
--- Table des ingrédients
 CREATE TABLE ingredient
 (
-    id           SERIAL PRIMARY KEY,
-    nom          VARCHAR(100)   NOT NULL,
-    prix_achat   NUMERIC(10, 2) NOT NULL,
-    id_unite     INT            NOT NULL REFERENCES unite (id) ON DELETE CASCADE, -- Unité de mesure (ex: kg, L)
-    seuil_alerte NUMERIC(10, 2) NOT NULL                                          -- Seuil pour les alertes
+    id_ingredient SERIAL,
+    nom           VARCHAR(255)   NOT NULL,
+    prix_achat    NUMERIC(15, 2) NOT NULL,
+    id_unite      INTEGER        NOT NULL,
+    PRIMARY KEY (id_ingredient),
+    FOREIGN KEY (id_unite) REFERENCES unite (id_unite)
 );
 
--- Table des produits
 CREATE TABLE produit
 (
-    id           SERIAL PRIMARY KEY,
-    nom          VARCHAR(100)   NOT NULL,
-    prix_vente   NUMERIC(10, 2) NOT NULL,
-    cout_revient NUMERIC(10, 2) NOT NULL DEFAULT 0 -- Calculé à partir des recette
+    id_produit SERIAL,
+    nom        VARCHAR(255)   NOT NULL,
+    prix_vente NUMERIC(15, 2) NOT NULL,
+    PRIMARY KEY (id_produit)
 );
 
--- Table des recettes (relation ingrédients -> produit)
 CREATE TABLE recette
 (
-    id               SERIAL PRIMARY KEY,
-    id_produit       INT            NOT NULL REFERENCES produit (id) ON DELETE CASCADE,
-    id_ingredient    INT            NOT NULL REFERENCES ingredient (id) ON DELETE CASCADE,
-    quantite_requise NUMERIC(10, 2) NOT NULL -- Quantité d'ingrédient nécessaire
+    id_recette       SERIAL,
+    quantite_requise NUMERIC(15, 2) NOT NULL,
+    id_produit       INTEGER        NOT NULL,
+    id_ingredient    INTEGER        NOT NULL,
+    PRIMARY KEY (id_recette),
+    FOREIGN KEY (id_produit) REFERENCES produit (id_produit),
+    FOREIGN KEY (id_ingredient) REFERENCES ingredient (id_ingredient)
 );
 
--- Table des productions
 CREATE TABLE statut_production
 (
-    id  SERIAL PRIMARY KEY,
-    nom VARCHAR(20) NOT NULL UNIQUE
+    id_statut_production SERIAL,
+    nom                  VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id_statut_production)
+);
+
+CREATE TABLE mouvement_stock
+(
+    id_mouvement_stock SERIAL,
+    quantite_entree    NUMERIC(15, 2) NOT NULL DEFAULT 0,
+    quantite_sortie    NUMERIC(15, 2) NOT NULL DEFAULT 0,
+    date_mouvement     DATE           NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    id_produit         INTEGER,
+    id_ingredient      INTEGER,
+    PRIMARY KEY (id_mouvement_stock),
+    FOREIGN KEY (id_produit) REFERENCES produit (id_produit),
+    FOREIGN KEY (id_ingredient) REFERENCES ingredient (id_ingredient)
 );
 
 CREATE TABLE production
 (
-    id                   SERIAL PRIMARY KEY,
-    date_production      DATE NOT NULL,
-    id_produit           INT  NOT NULL REFERENCES produit (id) ON DELETE CASCADE,
-    quantite_produite    INT  NOT NULL,
-    id_statut_production INT  NOT NULL DEFAULT 1 REFERENCES statut_production (id) -- planifie, en cours, termine
+    id_production        SERIAL,
+    date_production      DATE    NOT NULL,
+    quantite_produite    INTEGER NOT NULL,
+    id_produit           INTEGER NOT NULL,
+    id_statut_production INTEGER NOT NULL,
+    PRIMARY KEY (id_production),
+    FOREIGN KEY (id_produit) REFERENCES produit (id_produit),
+    FOREIGN KEY (id_statut_production) REFERENCES statut_production (id_statut_production)
 );
 
--- Table des mouvements de stock (historique des entrées/sorties)
-CREATE TABLE mouvement_stock
-(
-    id              SERIAL PRIMARY KEY,
-    id_ingredient   INT            REFERENCES ingredient (id) ON DELETE SET NULL,
-    id_produit      INT            REFERENCES produit (id) ON DELETE SET NULL,
-    quantite_entree NUMERIC(10, 2) NOT NULL DEFAULT 0,
-    quantite_sortie NUMERIC(10, 2) NOT NULL DEFAULT 0,
-    date_mouvement  TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
--- Table des utilisateurs
 CREATE TABLE utilisateur
 (
-    id           SERIAL PRIMARY KEY,
-    nom          VARCHAR(100)        NOT NULL,
-    email        VARCHAR(100) UNIQUE NOT NULL,
-    mot_de_passe VARCHAR(255)        NOT NULL, -- Hashé pour la sécurité
-    est_admin    BOOLEAN             NOT NULL DEFAULT FALSE
+    id_utilisateur SERIAL,
+    nom            VARCHAR(255),
+    email          VARCHAR(255) NOT NULL,
+    mot_de_passe   VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_utilisateur),
+    UNIQUE (email)
 );
-
--- Index pour les recherches fréquentes
-CREATE INDEX idx_produit_nom ON produit (nom);
-CREATE INDEX idx_ingredient_nom ON ingredient (nom);
-CREATE INDEX idx_mouvements_date ON mouvement_stock (date_mouvement);

@@ -10,7 +10,7 @@ public class Unite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_unite")
     private Integer id;
 
     @Column(name = "nom")

@@ -31,11 +31,6 @@
                 <option th:each="unite : ${unites}" th:value="${unite.id}" th:text="${unite.nom}"></option>
             </select>
         </div>
-        <div class="mb-3">
-            <label for="seuilAlerte" class="form-label">Seuil d'Alerte</label>
-            <input type="number" id="seuilAlerte" th:field="*{seuilAlerte}" step="0.01" class="form-control"
-                   placeholder="Seuil d'alerte" required>
-        </div>
         <button type="submit" class="btn btn-primary" th:text="${texteBouton}"></button>
     </form>
 </main>

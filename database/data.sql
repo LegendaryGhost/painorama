@@ -1,26 +1,26 @@
-INSERT INTO utilisateur (nom, email, mot_de_passe, est_admin)
-VALUES ('Jean Dupont', 'jean.dupont@example.com', crypt('mdp_jean123', gen_salt('bf')), TRUE),
-       ('Marie Curie', 'marie.curie@example.com', crypt('mdp_marie456', gen_salt('bf')), FALSE),
-       ('Albert Einstein', 'albert.einstein@example.com', crypt('mdp_albert789', gen_salt('bf')), TRUE),
-       ('Ada Lovelace', 'ada.lovelace@example.com', crypt('mdp_ada012', gen_salt('bf')), FALSE),
-       ('Alan Turing', 'alan.turing@example.com', crypt('mdp_alan345', gen_salt('bf')), FALSE);
+INSERT INTO utilisateur (nom, email, mot_de_passe)
+VALUES ('Jean Dupont', 'jean.dupont@example.com', crypt('mdp_jean123', gen_salt('bf'))),
+       ('Marie Curie', 'marie.curie@example.com', crypt('mdp_marie456', gen_salt('bf'))),
+       ('Albert Einstein', 'albert.einstein@example.com', crypt('mdp_albert789', gen_salt('bf'))),
+       ('Ada Lovelace', 'ada.lovelace@example.com', crypt('mdp_ada012', gen_salt('bf'))),
+       ('Alan Turing', 'alan.turing@example.com', crypt('mdp_alan345', gen_salt('bf')));
 
 INSERT INTO unite (nom)
 VALUES ('Kilogramme'),
        ('Litre'),
        ('Pièce');
 
-INSERT INTO ingredient (nom, prix_achat, id_unite, seuil_alerte)
-VALUES ('Farine', 1200, 1, 20.00),
-       ('Sucre', 8000, 1, 10.00),
-       ('Beurre', 5000, 1, 5.00),
-       ('Lait', 6000, 2, 50.00),
-       ('Levure', 1000, 1, 1.00),
-       ('Œufs', 1500, 3, 50.00),
-       ('Chocolat', 3000, 1, 5.00),
-       ('Sel', 5000, 1, 3.00),
-       ('Crème', 1800, 2, 5.00),
-       ('Vanille', 5000, 1, 0.50);
+INSERT INTO ingredient (nom, prix_achat, id_unite)
+VALUES ('Farine', 1200, 1),
+       ('Sucre', 8000, 1),
+       ('Beurre', 5000, 1),
+       ('Lait', 6000, 2),
+       ('Levure', 1000, 1),
+       ('Œufs', 1500, 3),
+       ('Chocolat', 3000, 1),
+       ('Sel', 5000, 1),
+       ('Crème', 1800, 2),
+       ('Vanille', 5000, 1);
 
 INSERT INTO mouvement_stock (id_ingredient, id_produit, quantite_entree, quantite_sortie, date_mouvement)
 VALUES

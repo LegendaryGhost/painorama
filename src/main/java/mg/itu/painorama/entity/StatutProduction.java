@@ -9,10 +9,10 @@ import lombok.Data;
 public class StatutProduction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id_statut_production", nullable = false)
     private Integer id;
 
-    @Column(name = "nom", nullable = false, length = 20)
+    @Column(name = "nom", nullable = false)
     private String nom;
 
 }

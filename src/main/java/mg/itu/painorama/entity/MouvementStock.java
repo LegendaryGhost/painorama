@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class MouvementStock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id_mouvement_stock", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -23,7 +23,6 @@ public class MouvementStock {
     private Ingredient ingredient;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.SET_NULL)
     @JoinColumn(name = "id_produit")
     private Produit produit;
 
