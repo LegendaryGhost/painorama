@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="Liasion ingrédient et produit"></title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+<header th:include="fragments/navbar"></header>
+
+<!-- Contenu Principal -->
+<main class="container mt-4">
+    <h2 th:text="Liasion ingrédient et produit"></h2>
+    <form th:action="@{/recettes/sauvegarder}" th:object="${recette}" method="post" class="mt-4">
+        <input type="hidden" name="id" th:field="*{id}">
+
+        <div class="mb-3">
+            <label for="produit" class="form-label">Produit</label>
+            <select class="form-select" name="produit" id="produit" th:field="*{produit}" required>
+                <option th:each="produit : ${produits}" th:value="${produit.id}" th:text="${produit.nom}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="ingredient" class="form-label">Ingrédient</label>
+            <select class="form-select" name="ingredient" id="ingredient" th:field="*{ingredient}" required>
+                <option th:each="ingredient : ${ingredients}" th:value="${ingredient.id}" th:text="${ingredient.nom}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="quantiteRequise" class="form-label">Quantité requise</label>
+            <input type="number" id="quantiteRequise" th:field="*{quantiteRequise}" class="form-control"
+                   placeholder="Quantité" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Lier</button>
+    </form>
+</main>
+
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>
