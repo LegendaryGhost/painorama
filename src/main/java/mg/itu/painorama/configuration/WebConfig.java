@@ -18,6 +18,8 @@ public class WebConfig implements WebMvcConfigurer {
 	registry.addInterceptor(authenticationInterceptor)
 		.addPathPatterns("/produits/**")
 		.addPathPatterns("/productions/**")
+		.addPathPatterns("/recettes/**")
+		.addPathPatterns("/ventes/**")
 		.addPathPatterns("/ingredients/**"); // Applique à toutes les routes sous "/ingredients/"
     }
 }

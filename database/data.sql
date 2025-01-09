@@ -78,7 +78,8 @@ VALUES ('Croissant', 2000, 1, 1),          -- Nature
        ('Éclair au chocolat', 3500, 2, 2), -- Chocolat
        ('Tarte aux pommes', 4500, 4, 5),   -- Pomme
        ('Mille-feuille', 5000, 4, 4),      -- Vanille
-       ('Opéra', 6000, 2, 6); -- Caramel
+       ('Opéra', 6000, 2, 6),              -- Nature
+       ('Croissant', 2000, 1, 2); -- Chocolat
 
 INSERT INTO recette (quantite_requise, id_produit, id_ingredient)
 VALUES
@@ -161,5 +162,7 @@ VALUES (10, '2025-01-01 10:30:00', 1), -- Vente de croissants
        (6, '2025-01-04 15:20:00', 5),  -- Vente d'éclairs au chocolat
        (3, '2025-01-05 14:10:00', 6),  -- Vente de tartes aux pommes
        (4, '2025-01-06 16:00:00', 7),  -- Vente de mille-feuilles
-       (2, '2025-01-07 18:30:00', 8); -- Vente d'opéras
+       (2, '2025-01-07 18:30:00', 8),  -- Vente d'opéras
+       (20, '2025-01-01 10:30:00', 9); -- Vente de croissants au chocolat
+
 

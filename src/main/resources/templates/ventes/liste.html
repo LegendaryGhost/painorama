@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Liste des Ventes</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+</head>
+<body>
+
+<header th:include="fragments/navbar"></header>
+
+<main class="container mt-4">
+    <h1>Liste des Ventes</h1>
+
+    <!-- Formulaire de filtre -->
+    <form class="row mb-3" th:action="@{/ventes}" method="get">
+        <div class="col-md-3">
+            <label for="idCategorie" class="form-label">Catégorie</label>
+            <select id="idCategorie" name="idCategorie" class="form-select">
+                <option value="">Toutes les catégories</option>
+                <option th:each="categorie : ${categories}" th:selected="categorie.id == idCategorie" th:value="${categorie.id}" th:text="${categorie.nom}"></option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="idParfum" class="form-label">Parfum</label>
+            <select id="idParfum" name="idParfum" class="form-select">
+                <option value="">Tous les parfums</option>
+                <option th:each="parfum : ${parfums}" th:selected="parfum.id == idParfum" th:value="${parfum.id}" th:text="${parfum.nom}"></option>
+            </select>
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary">Filtrer</button>
+        </div>
+    </form>
+
+    <div>
+        <a class="btn btn-success" th:href="@{/ventes/ajouter}">Ajouter</a>
+    </div>
+
+    <!-- Tableau -->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Catégorie</th>
+            <th>Parfum</th>
+            <th>Quantité</th>
+            <th>Date et heure</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="vente : ${ventes}">
+            <td th:text="${vente.produit.nom}"></td>
+            <td th:text="${vente.produit.categorie.nom}"></td>
+            <td th:text="${vente.produit.parfum.nom}"></td>
+            <td th:text="${vente.quantite}"></td>
+            <td th:text="${vente.dateHeure}"></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+
+<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+
+</body>
+</html>
