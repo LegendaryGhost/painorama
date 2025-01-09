@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titrePage}"></title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+<header th:include="fragments/navbar"></header>
+
+<!-- Contenu Principal -->
+<main class="container mt-4">
+    <h2 th:text="${titrePage}"></h2>
+    <form th:action="@{/ingredients/sauvegarder}" th:object="${ingredient}" method="post" class="mt-4">
+        <input type="hidden" name="id" th:field="*{id}">
+
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" id="nom" th:field="*{nom}" class="form-control" placeholder="Nom de l'ingrédient"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="prixAchat" class="form-label">Prix d'Achat (Ar)</label>
+            <input type="number" id="prixAchat" th:field="*{prixAchat}" step="0.01" class="form-control"
+                   placeholder="Prix d'achat" required>
+        </div>
+        <div class="mb-3">
+            <label for="unite" class="form-label">Unité</label>
+            <select class="form-select" name="unite" id="unite" th:field="*{unite}" required>
+                <option th:each="unite : ${unites}" th:value="${unite.id}" th:text="${unite.nom}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" th:text="${texteBouton}"></button>
+    </form>
+</main>
+
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

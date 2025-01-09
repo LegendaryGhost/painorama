@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Liste de Production</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+</head>
+<body>
+
+<header th:include="fragments/navbar"></header>
+
+<main class="container mt-4">
+    <h1>Liste de Production</h1>
+    <div>
+        <a class="btn btn-success" th:href="@{/productions/ajouter}">Ajouter</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Date et heure</th>
+            <th>Quantité</th>
+            <th>Statut</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="production : ${productions}">
+            <td th:text="${production.produit.nom}"></td>
+            <td th:text="${production.dateProduction}"></td>
+            <td th:text="${production.quantiteProduite}"></td>
+            <td th:text="${production.statutProduction.nom}"></td>
+            <td>
+                <a th:href="@{/productions/fiche/{id}(id=${production.id})}" class="btn btn-primary btn-sm">Voir</a>
+                <a th:href="@{/productions/modifier/{id}(id=${production.id})}" class="btn btn-warning btn-sm">Modifier</a>
+                <a th:href="@{/productions/effacer/{id}(id=${production.id})}" class="btn btn-danger btn-sm">Effacer</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+
+</body>
+</html>

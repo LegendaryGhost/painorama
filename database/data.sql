@@ -129,3 +129,18 @@ VALUES
     (0.1, 8, 7),  -- 0.1 kg de Chocolat
     (0.05, 8, 10); -- 0.05 kg de Vanille
 
+INSERT INTO statut_production (nom)
+VALUES ('En cours'),
+       ('Terminée'),
+       ('Annulée');
+
+INSERT INTO production (date_production, quantite_produite, id_produit, id_statut_production)
+VALUES ('2025-01-01', 100, 1, 2), -- 100 Croissants, statut "Terminée"
+       ('2025-01-01', 80, 2, 2),  -- 80 Pains au chocolat, statut "Terminée"
+       ('2025-01-02', 200, 3, 1), -- 200 Baguettes, statut "En cours"
+       ('2025-01-02', 150, 4, 1), -- 150 Pains complets, statut "En cours"
+       ('2025-01-03', 50, 5, 3),  -- 50 Éclairs au chocolat, statut "Annulée"
+       ('2025-01-04', 60, 6, 2),  -- 60 Tartes aux pommes, statut "Terminée"
+       ('2025-01-05', 30, 7, 1),  -- 30 Mille-feuilles, statut "En cours"
+       ('2025-01-06', 20, 8, 2); -- 20 Opéras, statut "Terminée"
+
