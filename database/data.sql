@@ -63,13 +63,13 @@ VALUES ('Viennoiserie'),
 
 INSERT INTO produit (nom, prix_vente, id_categorie)
 VALUES ('Croissant', 2000, 1),
-       ('Pain au chocolat', 2500, 1),
+       ('Pain au chocolat', 2500, 3),
        ('Baguette', 1500, 3),
        ('Pain complet', 2000, 3),
        ('Éclair au chocolat', 3500, 2),
-       ('Tarte aux pommes', 4500, 2),
-       ('Mille-feuille', 5000, 2),
-       ('Opéra', 6000, 4);
+       ('Tarte aux pommes', 4500, 4),
+       ('Mille-feuille', 5000, 4),
+       ('Opéra', 6000, 2);
 
 INSERT INTO recette (quantite_requise, id_produit, id_ingredient)
 VALUES

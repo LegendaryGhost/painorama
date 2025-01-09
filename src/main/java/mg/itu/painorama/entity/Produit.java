@@ -3,6 +3,8 @@ package mg.itu.painorama.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "produit")
@@ -21,5 +23,8 @@ public class Produit {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_categorie", nullable = false)
     private Categorie categorie;
+
+    @OneToMany(mappedBy = "produit", fetch = FetchType.LAZY)
+    private List<Recette> recettes;
 
 }
