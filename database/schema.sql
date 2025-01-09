@@ -7,6 +7,14 @@ CREATE DATABASE painorama;
 -- Extension de hachage Postgres
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
+CREATE TABLE parfum
+(
+    id_parfum SERIAL,
+    nom       VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id_parfum),
+    UNIQUE (nom)
+);
+
 CREATE TABLE unite
 (
     id_unite SERIAL,
@@ -56,8 +64,10 @@ CREATE TABLE produit
     nom          VARCHAR(255)   NOT NULL,
     prix_vente   NUMERIC(15, 2) NOT NULL,
     id_categorie INTEGER        NOT NULL,
+    id_parfum    INTEGER        NOT NULL,
     PRIMARY KEY (id_produit),
-    FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie)
+    FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie),
+    FOREIGN KEY (id_parfum) REFERENCES parfum (id_parfum)
 );
 
 CREATE TABLE recette
@@ -94,4 +104,14 @@ CREATE TABLE production
     PRIMARY KEY (id_production),
     FOREIGN KEY (id_produit) REFERENCES produit (id_produit),
     FOREIGN KEY (id_statut_production) REFERENCES statut_production (id_statut_production)
+);
+
+CREATE TABLE vente
+(
+    id_vente   SERIAL,
+    quantite   NUMERIC(15, 2) NOT NULL,
+    date_heure TIMESTAMP      NOT NULL,
+    id_produit INTEGER        NOT NULL,
+    PRIMARY KEY (id_vente),
+    FOREIGN KEY (id_produit) REFERENCES produit (id_produit)
 );

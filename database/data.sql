@@ -61,15 +61,24 @@ VALUES ('Viennoiserie'),
        ('Pain'),
        ('Gâteau');
 
-INSERT INTO produit (nom, prix_vente, id_categorie)
-VALUES ('Croissant', 2000, 1),
-       ('Pain au chocolat', 2500, 3),
-       ('Baguette', 1500, 3),
-       ('Pain complet', 2000, 3),
-       ('Éclair au chocolat', 3500, 2),
-       ('Tarte aux pommes', 4500, 4),
-       ('Mille-feuille', 5000, 4),
-       ('Opéra', 6000, 2);
+INSERT INTO parfum (nom)
+VALUES ('Nature'),
+       ('Chocolat'),
+       ('Fraise'),
+       ('Vanille'),
+       ('Pomme'),
+       ('Caramel'),
+       ('Noisette');
+
+INSERT INTO produit (nom, prix_vente, id_categorie, id_parfum)
+VALUES ('Croissant', 2000, 1, 1),          -- Nature
+       ('Pain au chocolat', 2500, 3, 2),   -- Chocolat
+       ('Baguette', 1500, 3, 1),           -- Nature
+       ('Pain complet', 2000, 3, 1),       -- Nature
+       ('Éclair au chocolat', 3500, 2, 2), -- Chocolat
+       ('Tarte aux pommes', 4500, 4, 5),   -- Pomme
+       ('Mille-feuille', 5000, 4, 4),      -- Vanille
+       ('Opéra', 6000, 2, 6); -- Caramel
 
 INSERT INTO recette (quantite_requise, id_produit, id_ingredient)
 VALUES
@@ -143,3 +152,14 @@ VALUES ('2025-01-01 08:00:00', 100, 1, 2), -- 100 Croissants, statut "Terminée"
        ('2025-01-04 11:30:00', 60, 6, 2),  -- 60 Tartes aux pommes, statut "Terminée"
        ('2025-01-05 16:45:00', 30, 7, 1),  -- 30 Mille-feuilles, statut "En cours"
        ('2025-01-06 18:20:00', 20, 8, 2); -- 20 Opéras, statut "Terminée"
+
+INSERT INTO vente (quantite, date_heure, id_produit)
+VALUES (10, '2025-01-01 10:30:00', 1), -- Vente de croissants
+       (5, '2025-01-02 12:15:00', 2),  -- Vente de pains au chocolat
+       (20, '2025-01-03 09:45:00', 3), -- Vente de baguettes
+       (8, '2025-01-03 10:00:00', 4),  -- Vente de pains complets
+       (6, '2025-01-04 15:20:00', 5),  -- Vente d'éclairs au chocolat
+       (3, '2025-01-05 14:10:00', 6),  -- Vente de tartes aux pommes
+       (4, '2025-01-06 16:00:00', 7),  -- Vente de mille-feuilles
+       (2, '2025-01-07 18:30:00', 8); -- Vente d'opéras
+
