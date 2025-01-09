@@ -12,23 +12,30 @@
 <!-- Contenu Principal -->
 <main class="container mt-4">
     <h2 th:text="${titrePage}"></h2>
-    <form th:action="@{/ingredients/sauvegarder}" th:object="${ingredient}" method="post" class="mt-4">
+    <form th:action="@{/productions/sauvegarder}" th:object="${production}" method="post" class="mt-4">
         <input type="hidden" name="id" th:field="*{id}">
 
         <div class="mb-3">
-            <label for="nom" class="form-label">Nom</label>
-            <input type="text" id="nom" th:field="*{nom}" class="form-control" placeholder="Nom de l'ingrédient"
+            <label for="dateHeure" class="form-label">Date et heure</label>
+            <input type="datetime-local" id="dateHeure" name="dateHeure"
+                   th:value="${#temporals.format(production.dateHeure, 'yyyy-MM-dd''T''HH:mm')}" class="form-control"
                    required>
         </div>
         <div class="mb-3">
-            <label for="prixAchat" class="form-label">Prix d'Achat (Ar)</label>
-            <input type="number" id="prixAchat" th:field="*{prixAchat}" step="0.01" class="form-control"
-                   placeholder="Prix d'achat" required>
+            <label for="produit" class="form-label">Produit</label>
+            <select class="form-select" name="produit" id="produit" th:field="*{produit}" required>
+                <option th:each="produit : ${produits}" th:value="${produit.id}" th:text="${produit.nom}"></option>
+            </select>
         </div>
         <div class="mb-3">
-            <label for="unite" class="form-label">Unité</label>
-            <select class="form-select" name="unite" id="unite" th:field="*{unite}" required>
-                <option th:each="unite : ${unites}" th:value="${unite.id}" th:text="${unite.nom}"></option>
+            <label for="quantite" class="form-label">Quantité (pièces)</label>
+            <input type="number" id="quantite" th:field="*{quantite}" class="form-control"
+                   placeholder="Quantité" required>
+        </div>
+        <div class="mb-3">
+            <label for="statut" class="form-label">Statut</label>
+            <select class="form-select" name="statut" id="statut" th:field="*{statutProduction}" required>
+                <option th:each="statut : ${statuts}" th:value="${statut.id}" th:text="${statut.nom}"></option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary" th:text="${texteBouton}"></button>

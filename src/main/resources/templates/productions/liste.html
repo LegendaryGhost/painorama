@@ -26,11 +26,10 @@
         <tbody>
         <tr th:each="production : ${productions}">
             <td th:text="${production.produit.nom}"></td>
-            <td th:text="${production.dateProduction}"></td>
-            <td th:text="${production.quantiteProduite}"></td>
+            <td th:text="${production.dateHeure}"></td>
+            <td th:text="${production.quantite}"></td>
             <td th:text="${production.statutProduction.nom}"></td>
             <td>
-                <a th:href="@{/productions/fiche/{id}(id=${production.id})}" class="btn btn-primary btn-sm">Voir</a>
                 <a th:href="@{/productions/modifier/{id}(id=${production.id})}" class="btn btn-warning btn-sm">Modifier</a>
                 <a th:href="@{/productions/effacer/{id}(id=${production.id})}" class="btn btn-danger btn-sm">Effacer</a>
             </td>

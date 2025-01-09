@@ -17,4 +17,19 @@ public class ProductionService {
 	return productionRepository.findAll();
     }
 
+    public Production findById(Integer id) {
+	return productionRepository.findById(id).orElseThrow(() -> new RuntimeException("Production introuvable"));
+    }
+
+    public void create(Production production) {
+	productionRepository.save(production);
+    }
+
+    public void update(Production production) {
+	productionRepository.save(production);
+    }
+
+    public void delete(Integer id) {
+	productionRepository.deleteById(id);
+    }
 }

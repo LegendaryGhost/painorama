@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface MouvementStockRepository extends JpaRepository<MouvementStock, Integer> {
 
-    List<MouvementStock> findByIngredientOrderByDateMouvementDesc(Ingredient ingredient);
+    List<MouvementStock> findByIngredientOrderByDateHeureDesc(Ingredient ingredient);
 
 }

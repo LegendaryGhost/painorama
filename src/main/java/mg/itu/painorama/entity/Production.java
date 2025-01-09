@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -15,15 +15,15 @@ public class Production {
     @Column(name = "id_production", nullable = false)
     private Integer id;
 
-    @Column(name = "date_production", nullable = false)
-    private LocalDate dateProduction;
+    @Column(name = "date_heure", nullable = false)
+    private LocalDateTime dateHeure;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_produit", nullable = false)
     private Produit produit;
 
-    @Column(name = "quantite_produite", nullable = false)
-    private Integer quantiteProduite;
+    @Column(name = "quantite", nullable = false)
+    private Integer quantite;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @ColumnDefault("1")

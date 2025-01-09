@@ -76,7 +76,7 @@ CREATE TABLE mouvement_stock
     id_mouvement_stock SERIAL,
     quantite_entree    NUMERIC(15, 2) NOT NULL DEFAULT 0,
     quantite_sortie    NUMERIC(15, 2) NOT NULL DEFAULT 0,
-    date_mouvement     DATE           NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    date_heure         TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,
     id_produit         INTEGER,
     id_ingredient      INTEGER,
     PRIMARY KEY (id_mouvement_stock),
@@ -87,10 +87,10 @@ CREATE TABLE mouvement_stock
 CREATE TABLE production
 (
     id_production        SERIAL,
-    date_production      DATE    NOT NULL,
-    quantite_produite    INTEGER NOT NULL,
-    id_produit           INTEGER NOT NULL,
-    id_statut_production INTEGER NOT NULL,
+    date_heure           TIMESTAMP NOT NULL,
+    quantite             INTEGER   NOT NULL,
+    id_produit           INTEGER   NOT NULL,
+    id_statut_production INTEGER   NOT NULL,
     PRIMARY KEY (id_production),
     FOREIGN KEY (id_produit) REFERENCES produit (id_produit),
     FOREIGN KEY (id_statut_production) REFERENCES statut_production (id_statut_production)

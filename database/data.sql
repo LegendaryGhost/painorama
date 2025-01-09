@@ -22,7 +22,7 @@ VALUES ('Farine', 1200, 1),
        ('Crème', 1800, 2),
        ('Vanille', 5000, 1);
 
-INSERT INTO mouvement_stock (id_ingredient, id_produit, quantite_entree, quantite_sortie, date_mouvement)
+INSERT INTO mouvement_stock (id_ingredient, id_produit, quantite_entree, quantite_sortie, date_heure)
 VALUES
     -- Mouvements pour l'ingrédient 1 (Farine)
     (1, NULL, 50.00, 0.00, '2024-12-20 10:00:00'),
@@ -134,13 +134,12 @@ VALUES ('En cours'),
        ('Terminée'),
        ('Annulée');
 
-INSERT INTO production (date_production, quantite_produite, id_produit, id_statut_production)
-VALUES ('2025-01-01', 100, 1, 2), -- 100 Croissants, statut "Terminée"
-       ('2025-01-01', 80, 2, 2),  -- 80 Pains au chocolat, statut "Terminée"
-       ('2025-01-02', 200, 3, 1), -- 200 Baguettes, statut "En cours"
-       ('2025-01-02', 150, 4, 1), -- 150 Pains complets, statut "En cours"
-       ('2025-01-03', 50, 5, 3),  -- 50 Éclairs au chocolat, statut "Annulée"
-       ('2025-01-04', 60, 6, 2),  -- 60 Tartes aux pommes, statut "Terminée"
-       ('2025-01-05', 30, 7, 1),  -- 30 Mille-feuilles, statut "En cours"
-       ('2025-01-06', 20, 8, 2); -- 20 Opéras, statut "Terminée"
-
+INSERT INTO production (date_heure, quantite, id_produit, id_statut_production)
+VALUES ('2025-01-01 08:00:00', 100, 1, 2), -- 100 Croissants, statut "Terminée"
+       ('2025-01-01 09:30:00', 80, 2, 2),  -- 80 Pains au chocolat, statut "Terminée"
+       ('2025-01-02 07:45:00', 200, 3, 1), -- 200 Baguettes, statut "En cours"
+       ('2025-01-02 10:15:00', 150, 4, 1), -- 150 Pains complets, statut "En cours"
+       ('2025-01-03 14:00:00', 50, 5, 3),  -- 50 Éclairs au chocolat, statut "Annulée"
+       ('2025-01-04 11:30:00', 60, 6, 2),  -- 60 Tartes aux pommes, statut "Terminée"
+       ('2025-01-05 16:45:00', 30, 7, 1),  -- 30 Mille-feuilles, statut "En cours"
+       ('2025-01-06 18:20:00', 20, 8, 2); -- 20 Opéras, statut "Terminée"

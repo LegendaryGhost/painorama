@@ -35,7 +35,7 @@ public class MouvementStock {
     private Double quantiteSortie = 0.0;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "date_mouvement", nullable = false)
-    private LocalDateTime dateMouvement = LocalDateTime.now();
+    @Column(name = "date_heure", nullable = false)
+    private LocalDateTime dateHeure = LocalDateTime.now();
 
 }

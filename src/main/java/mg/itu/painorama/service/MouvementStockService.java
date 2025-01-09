@@ -17,7 +17,7 @@ public class MouvementStockService {
     public List<MouvementStock> findByIngredientId(Integer ingredientId) {
 	Ingredient ingredient = new Ingredient();
 	ingredient.setId(ingredientId);
-	return mouvementStockRepository.findByIngredientOrderByDateMouvementDesc(ingredient);
+	return mouvementStockRepository.findByIngredientOrderByDateHeureDesc(ingredient);
     }
 
 }

@@ -27,7 +27,8 @@
             <div class="btn-group">
                 <a th:href="@{/ingredients/modifier/{id}(id=${ingredient.id})}" class="btn btn-warning">Modifier</a>
                 <a th:href="@{/ingredients/effacer/{id}(id=${ingredient.id})}" class="btn btn-danger">Supprimer</a>
-                <a th:href="@{/ingredients/addStock/{id}(id=${ingredient.id})}" class="btn btn-success">Ajouter au stock</a>
+                <a th:href="@{/ingredients/addStock/{id}(id=${ingredient.id})}" class="btn btn-success">Ajouter au
+                    stock</a>
             </div>
 
             <!-- Historique des mouvements de stock -->
@@ -35,7 +36,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Date</th>
+                    <th>Date et heure</th>
                     <th>Entrée</th>
                     <th>Sortie</th>
                     <th>Produit ou ingrédient associé</th>
@@ -43,7 +44,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="mouvement : ${mouvements}">
-                    <td th:text="${mouvement.dateMouvement}"></td>
+                    <td th:text="${mouvement.dateHeure}"></td>
                     <td th:text="${mouvement.quantiteEntree}"></td>
                     <td th:text="${mouvement.quantiteSortie}"></td>
                     <td>
