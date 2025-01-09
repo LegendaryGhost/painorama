@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter une vente</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+<header th:include="fragments/navbar"></header>
+
+<!-- Contenu Principal -->
+<main class="container mt-4">
+    <h2>Ajouter une vente</h2>
+    <form th:action="@{/ventes/sauvegarder}" th:object="${vente}" method="post" class="mt-4">
+        <input type="hidden" name="id" th:field="*{id}">
+
+        <div class="mb-3">
+            <label for="produit" class="form-label">Produit</label>
+            <select class="form-select" name="produit" id="produit" th:field="*{produit}" required>
+                <option th:each="produit : ${produits}" th:value="${produit.id}" th:text="${produit.nom}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="quantite" class="form-label">Quantité (pièces)</label>
+            <input type="number" min="0" id="quantite" th:field="*{quantite}" class="form-control"
+                   placeholder="Quantité" required>
+        </div>
+        <div class="mb-3">
+            <label for="dateHeure" class="form-label">Date et heure</label>
+            <input type="datetime-local" id="dateHeure" th:field="*{dateHeure}" class="form-control"
+                   required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</main>
+
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

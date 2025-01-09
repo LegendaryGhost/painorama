@@ -24,6 +24,10 @@ public class Produit {
     @JoinColumn(name = "id_categorie", nullable = false)
     private Categorie categorie;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_parfum", nullable = false)
+    private Parfum parfum;
+
     @OneToMany(mappedBy = "produit", fetch = FetchType.LAZY)
     private List<Recette> recettes;
 

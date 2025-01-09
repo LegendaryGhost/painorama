@@ -109,9 +109,9 @@ CREATE TABLE production
 CREATE TABLE vente
 (
     id_vente   SERIAL,
-    quantite   NUMERIC(15, 2) NOT NULL,
-    date_heure TIMESTAMP      NOT NULL,
-    id_produit INTEGER        NOT NULL,
+    quantite   INT       NOT NULL,
+    date_heure TIMESTAMP NOT NULL,
+    id_produit INTEGER   NOT NULL,
     PRIMARY KEY (id_vente),
     FOREIGN KEY (id_produit) REFERENCES produit (id_produit)
 );
