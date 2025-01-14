@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Liste des produits conseillés</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+</head>
+<body>
+
+<header th:include="fragments/navbar"></header>
+
+<main class="container mt-4">
+    <h1>Liste des produits conseillés</h1>
+
+    <!-- Formulaire de filtre -->
+    <form class="row mb-3" th:action="@{/produits-conseil}" method="get">
+<!--        <div class="col-md-3">-->
+<!--            <label for="idProduit" class="form-label">Produit</label>-->
+<!--            <select id="idProduit" name="idProduit" class="form-select">-->
+<!--                <option value="">Tous les produits</option>-->
+<!--                <option th:each="produit : ${produits}" th:selected="produit.id == idProduit" th:value="${produit.id}" th:text="${produit.nom}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div class="col-md-3">-->
+<!--            <label for="idStatut" class="form-label">Statut</label>-->
+<!--            <select id="idStatut" name="idStatut" class="form-select">-->
+<!--                <option value="">Tous les statuts</option>-->
+<!--                <option th:each="statut : ${statuts}" th:selected="statut.id == idStatut" th:value="${statut.id}" th:text="${statut.nom}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div class="col-md-3">-->
+<!--            <label for="date" class="form-label">Date</label>-->
+<!--            <input th:value="${date}" type="date" id="date" name="date" class="form-control">-->
+<!--        </div>-->
+<!--        <div class="col-md-3">-->
+<!--            <label for="idCategorie" class="form-label">Catégorie</label>-->
+<!--            <select id="idCategorie" name="idCategorie" class="form-select">-->
+<!--                <option value="">Toutes les catégories</option>-->
+<!--                <option th:each="categorie : ${categories}" th:selected="categorie.id == idCategorie" th:value="${categorie.id}" th:text="${categorie.nom}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div class="col-md-3">-->
+<!--            <label for="idIngredient" class="form-label">Ingrédient</label>-->
+<!--            <select id="idIngredient" name="idIngredient" class="form-select">-->
+<!--                <option value="">Tous les ingrédients</option>-->
+<!--                <option th:each="ingredient : ${ingredients}" th:selected="ingredient.id == idIngredient" th:value="${ingredient.id}" th:text="${ingredient.nom}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary">Filtrer</button>
+        </div>
+    </form>
+
+    <div>
+        <a class="btn btn-success" th:href="@{/produits-conseil/ajouter}">Ajouter</a>
+    </div>
+
+    <!-- Tableau -->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Catégorie</th>
+            <th>Parfum</th>
+            <th>Prix de vente</th>
+            <th>Conseil</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="produitConseil : ${produitsConseil}">
+            <td th:text="${produitConseil.produit.nom}"></td>
+            <td th:text="${produitConseil.produit.categorie.nom}"></td>
+            <td th:text="${produitConseil.produit.parfum.nom}"></td>
+            <td th:text="${produitConseil.produit.prixVente}"></td>
+            <td th:text="${produitConseil.description}"></td>
+            <td th:text="${produitConseil.date}"></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+
+<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+
+</body>
+</html>
