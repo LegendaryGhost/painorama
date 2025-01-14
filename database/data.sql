@@ -165,4 +165,22 @@ VALUES (10, '2025-01-01 10:30:00', 1), -- Vente de croissants
        (2, '2025-01-07 18:30:00', 8),  -- Vente d'opéras
        (20, '2025-01-01 10:30:00', 9); -- Vente de croissants au chocolat
 
+INSERT INTO produit_conseil (date_conseil, description, id_produit)
+VALUES ('2025-01-01', 'Produit de saison hivernale, parfait pour accompagner un chocolat chaud.',
+        1),                                                                                            -- Croissant Nature
+       ('2025-01-01', 'Parfait pour bien commencer l’année avec une option classique.', 3),            -- Baguette Nature
+       ('2025-01-01', 'Produit riche en fibres pour une alimentation équilibrée après les fêtes.', 4), -- Pain complet
+       ('2025-02-01', 'Idéal pour la Saint-Valentin, saveur chocolatée appréciée.', 2),                -- Pain au chocolat
+       ('2025-02-01', 'Délice au chocolat idéal pour les cadeaux de Saint-Valentin.', 5),              -- Éclair au chocolat
+       ('2025-02-01', 'Saveur raffinée pour célébrer l’amour et le plaisir.', 7),                      -- Mille-feuille
+       ('2025-03-01', 'Option sans gluten disponible, idéal pour les clients sensibles.', 3),          -- Baguette Nature
+       ('2025-03-01', 'Saveur fruitée qui annonce l’arrivée du printemps.', 6),                        -- Tarte aux pommes
+       ('2025-03-01', 'Dessert chocolaté parfait pour les dernières soirées fraîches de l’hiver.',
+        2),                                                                                            -- Pain au chocolat
+       ('2025-04-01', 'Recommandé pour son apport en fibres au printemps.', 4),                        -- Pain complet
+       ('2025-05-01', 'Dessert léger et apprécié en mai.', 5),                                         -- Éclair au chocolat
+       ('2025-06-01', 'Produit phare pour les pique-niques d’été.', 6),                                -- Tarte aux pommes
+       ('2025-09-01', 'Retour des saveurs classiques pour la rentrée.', 7),                            -- Mille-feuille
+       ('2025-10-01', 'Parfait pour accompagner le café pendant l’automne.', 8),                       -- Opéra
+       ('2025-12-01', 'Produit festif au chocolat, très demandé en décembre.', 9); -- Croissant Chocolat
 

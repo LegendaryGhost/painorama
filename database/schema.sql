@@ -7,14 +7,6 @@ CREATE DATABASE painorama;
 -- Extension de hachage Postgres
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
-CREATE TABLE parfum
-(
-    id_parfum SERIAL,
-    nom       VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id_parfum),
-    UNIQUE (nom)
-);
-
 CREATE TABLE unite
 (
     id_unite SERIAL,
@@ -58,16 +50,24 @@ CREATE TABLE categorie
     UNIQUE (nom)
 );
 
+CREATE TABLE parfum
+(
+    id_parfum SERIAL,
+    nom       VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_parfum),
+    UNIQUE (nom)
+);
+
 CREATE TABLE produit
 (
     id_produit   SERIAL,
     nom          VARCHAR(255)   NOT NULL,
     prix_vente   NUMERIC(15, 2) NOT NULL,
-    id_categorie INTEGER        NOT NULL,
     id_parfum    INTEGER        NOT NULL,
+    id_categorie INTEGER        NOT NULL,
     PRIMARY KEY (id_produit),
-    FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie),
-    FOREIGN KEY (id_parfum) REFERENCES parfum (id_parfum)
+    FOREIGN KEY (id_parfum) REFERENCES parfum (id_parfum),
+    FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie)
 );
 
 CREATE TABLE recette
@@ -106,10 +106,20 @@ CREATE TABLE production
     FOREIGN KEY (id_statut_production) REFERENCES statut_production (id_statut_production)
 );
 
+CREATE TABLE produit_conseil
+(
+    id_produit_conseil SERIAL,
+    date_conseil       DATE    NOT NULL,
+    description        VARCHAR(255),
+    id_produit         INTEGER NOT NULL,
+    PRIMARY KEY (id_produit_conseil),
+    FOREIGN KEY (id_produit) REFERENCES produit (id_produit)
+);
+
 CREATE TABLE vente
 (
     id_vente   SERIAL,
-    quantite   INT       NOT NULL,
+    quantite   INTEGER   NOT NULL,
     date_heure TIMESTAMP NOT NULL,
     id_produit INTEGER   NOT NULL,
     PRIMARY KEY (id_vente),
