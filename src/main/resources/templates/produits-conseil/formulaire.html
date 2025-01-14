@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un produit conseillé</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+<header th:include="fragments/navbar"></header>
+
+<!-- Contenu Principal -->
+<main class="container mt-4">
+    <h2>Ajouter un produit conseillé</h2>
+    <form th:action="@{/produits-conseil/sauvegarder}" th:object="${produitConseilRequest}" method="post" class="mt-4">
+        <div class="mb-3">
+            <label for="produit" class="form-label">Produit</label>
+            <select class="form-select" name="produit" id="produit" th:field="*{idProduit}" required>
+                <option th:each="produit : ${produits}" th:value="${produit.id}" th:text="${produit.nom}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="mois" class="form-label">Mois</label>
+            <select class="form-select" name="mois" id="mois" th:field="*{mois}" required>
+                <option th:each="mois : ${listeMois}" th:value="${mois.id}" th:text="${mois.nom}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="annee" class="form-label">Année</label>
+            <input type="number" id="annee" th:field="*{annee}" class="form-control"
+                   placeholder="Année" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" id="description" th:field="*{description}" class="form-control"
+                   placeholder="Description" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</main>
+
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>
