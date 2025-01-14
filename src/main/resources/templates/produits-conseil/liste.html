@@ -13,38 +13,17 @@
 
     <!-- Formulaire de filtre -->
     <form class="row mb-3" th:action="@{/produits-conseil}" method="get">
-<!--        <div class="col-md-3">-->
-<!--            <label for="idProduit" class="form-label">Produit</label>-->
-<!--            <select id="idProduit" name="idProduit" class="form-select">-->
-<!--                <option value="">Tous les produits</option>-->
-<!--                <option th:each="produit : ${produits}" th:selected="produit.id == idProduit" th:value="${produit.id}" th:text="${produit.nom}"></option>-->
-<!--            </select>-->
-<!--        </div>-->
-<!--        <div class="col-md-3">-->
-<!--            <label for="idStatut" class="form-label">Statut</label>-->
-<!--            <select id="idStatut" name="idStatut" class="form-select">-->
-<!--                <option value="">Tous les statuts</option>-->
-<!--                <option th:each="statut : ${statuts}" th:selected="statut.id == idStatut" th:value="${statut.id}" th:text="${statut.nom}"></option>-->
-<!--            </select>-->
-<!--        </div>-->
-<!--        <div class="col-md-3">-->
-<!--            <label for="date" class="form-label">Date</label>-->
-<!--            <input th:value="${date}" type="date" id="date" name="date" class="form-control">-->
-<!--        </div>-->
-<!--        <div class="col-md-3">-->
-<!--            <label for="idCategorie" class="form-label">Catégorie</label>-->
-<!--            <select id="idCategorie" name="idCategorie" class="form-select">-->
-<!--                <option value="">Toutes les catégories</option>-->
-<!--                <option th:each="categorie : ${categories}" th:selected="categorie.id == idCategorie" th:value="${categorie.id}" th:text="${categorie.nom}"></option>-->
-<!--            </select>-->
-<!--        </div>-->
-<!--        <div class="col-md-3">-->
-<!--            <label for="idIngredient" class="form-label">Ingrédient</label>-->
-<!--            <select id="idIngredient" name="idIngredient" class="form-select">-->
-<!--                <option value="">Tous les ingrédients</option>-->
-<!--                <option th:each="ingredient : ${ingredients}" th:selected="ingredient.id == idIngredient" th:value="${ingredient.id}" th:text="${ingredient.nom}"></option>-->
-<!--            </select>-->
-<!--        </div>-->
+        <div class="col-md-3">
+            <label for="mois" class="form-label">Mois</label>
+            <select class="form-select" name="mois" id="mois" required>
+                <option th:each="moisElement : ${listeMois}" th:value="${moisElement.id}" th:text="${moisElement.nom}"></option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="annee" class="form-label">Année</label>
+            <input type="number" id="annee" name="annee" class="form-control" th:value="${annee}"
+                   placeholder="Année" required>
+        </div>
         <div class="col-md-3 d-flex align-items-end">
             <button type="submit" class="btn btn-primary">Filtrer</button>
         </div>

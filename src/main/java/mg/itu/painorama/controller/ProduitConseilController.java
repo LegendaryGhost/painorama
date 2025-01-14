@@ -8,10 +8,9 @@ import mg.itu.painorama.service.ProduitConseilService;
 import mg.itu.painorama.service.ProduitService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @RequestMapping("/produits-conseil")
@@ -24,8 +23,21 @@ public class ProduitConseilController {
     private final ProduitConseilService produitConseilService;
 
     @GetMapping
-    public String listeProduitsConseil(Model model) {
-	model.addAttribute("produitsConseil", produitConseilRepository.findAll());
+    public String listeProduitsConseil(
+	    @RequestParam(value = "mois", required = false) Integer mois,
+	    @RequestParam(value = "annee", required = false) Integer annee,
+	    Model model) {
+
+	// Définir le mois et l'année actuels si null
+	LocalDate today = LocalDate.now();
+	mois = (mois != null) ? mois : today.getMonthValue();
+	annee = (annee != null) ? annee : today.getYear();
+
+	model.addAttribute("produitsConseil", produitConseilService.findByMonthAndYear(mois, annee));
+	model.addAttribute("listeMois", monthService.getMonthsInFrench());
+	model.addAttribute("mois", mois);
+	model.addAttribute("annee", annee);
+
 	return "produits-conseil/liste";
     }
 

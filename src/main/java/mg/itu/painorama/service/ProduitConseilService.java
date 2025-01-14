@@ -8,6 +8,7 @@ import mg.itu.painorama.repository.ProduitConseilRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -24,10 +25,14 @@ public class ProduitConseilService {
 
 	produitConseil.setDescription(request.getDescription());
 
-	LocalDate date = LocalDate.of(request.getAnnee(), request.getMois() + 1, 1);
+	LocalDate date = LocalDate.of(request.getAnnee(), request.getMois(), 1);
 	produitConseil.setDate(date);
 
 	produitConseilRepository.save(produitConseil);
+    }
+
+    public List<ProduitConseil> findByMonthAndYear(Integer mois, Integer annee) {
+	return produitConseilRepository.findByMonthAndYear(mois, annee);
     }
 
 }
