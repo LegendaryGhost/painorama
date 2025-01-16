@@ -2,10 +2,7 @@ package mg.itu.painorama.controller;
 
 import lombok.AllArgsConstructor;
 import mg.itu.painorama.entity.Vente;
-import mg.itu.painorama.service.CategorieService;
-import mg.itu.painorama.service.ParfumService;
-import mg.itu.painorama.service.ProduitService;
-import mg.itu.painorama.service.VenteService;
+import mg.itu.painorama.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +18,7 @@ public class VenteController {
     private final VenteService venteService;
     private final CategorieService categorieService;
     private final ParfumService parfumService;
+    private final ClientService clientService;
 
     @GetMapping
     public String listeVentes(@RequestParam(value = "idCategorie", required = false) Integer idCategorie,
@@ -38,6 +36,7 @@ public class VenteController {
     public String ajouterVente(Model model) {
 	model.addAttribute("vente", new Vente());
 	model.addAttribute("produits", produitService.findAll());
+	model.addAttribute("clients", clientService.findAll());
 
 	return "ventes/formulaire";
     }

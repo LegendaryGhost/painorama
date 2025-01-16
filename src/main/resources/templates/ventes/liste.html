@@ -44,6 +44,7 @@
             <th>Catégorie</th>
             <th>Parfum</th>
             <th>Quantité</th>
+            <th>Client</th>
             <th>Date et heure</th>
         </tr>
         </thead>
@@ -53,6 +54,7 @@
             <td th:text="${vente.produit.categorie.nom}"></td>
             <td th:text="${vente.produit.parfum.nom}"></td>
             <td th:text="${vente.quantite}"></td>
+            <td th:text="${vente.client.prenom + ' ' + vente.client.nom}"></td>
             <td th:text="${vente.dateHeure}"></td>
         </tr>
         </tbody>

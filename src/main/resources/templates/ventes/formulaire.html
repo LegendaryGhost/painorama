@@ -27,6 +27,12 @@
                    placeholder="Quantité" required>
         </div>
         <div class="mb-3">
+            <label for="client" class="form-label">Client</label>
+            <select class="form-select" name="client" id="client" th:field="*{client}" required>
+                <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.prenom + ' ' + client.nom}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
             <label for="dateHeure" class="form-label">Date et heure</label>
             <input type="datetime-local" id="dateHeure" th:field="*{dateHeure}" class="form-control"
                    required>

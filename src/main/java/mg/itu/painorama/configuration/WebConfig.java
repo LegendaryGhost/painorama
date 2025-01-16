@@ -21,6 +21,7 @@ public class WebConfig implements WebMvcConfigurer {
 		.addPathPatterns("/recettes/**")
 		.addPathPatterns("/ventes/**")
 		.addPathPatterns("/produits-conseil/**")
+		.addPathPatterns("/clients/**")
 		.addPathPatterns("/ingredients/**"); // Applique à toutes les routes sous "/ingredients/"
     }
 }
