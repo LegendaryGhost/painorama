@@ -22,4 +22,8 @@ public class ClientService {
 	return clientRepository.findByVenteDate(dateVente);
     }
 
+    public void create(Client client) {
+	clientRepository.save(client);
+    }
+
 }

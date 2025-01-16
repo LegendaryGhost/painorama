@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un client</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+<header th:include="fragments/navbar"></header>
+
+<!-- Contenu Principal -->
+<main class="container mt-4">
+    <h2>Ajouter un client</h2>
+    <form th:action="@{/clients/sauvegarder}" th:object="${client}" method="post" class="mt-4">
+        <input type="hidden" name="id" th:field="*{id}">
+
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" id="nom" th:field="*{nom}" class="form-control" placeholder="Nom"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="prenom" class="form-label">Prénom</label>
+            <input type="text" id="prenom" th:field="*{prenom}" class="form-control" placeholder="Prénom" required>
+        </div>
+        <div class="mb-3">
+            <label for="dateNaissance" class="form-label">Date de naissance</label>
+            <input type="date" name="dateNaissance" id="dateNaissance" th:field="*{dateNaissance}" class="form-control"
+                   required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</main>
+
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>
