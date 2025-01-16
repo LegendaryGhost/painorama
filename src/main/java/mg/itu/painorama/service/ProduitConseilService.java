@@ -35,4 +35,8 @@ public class ProduitConseilService {
 	return produitConseilRepository.findByMonthAndYear(mois, annee);
     }
 
+    public List<ProduitConseil> findByYear(Integer annee) {
+	return produitConseilRepository.findByYear(annee);
+    }
+
 }

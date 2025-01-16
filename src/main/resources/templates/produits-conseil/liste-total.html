@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Historique des produits conseillés</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+</head>
+<body>
+
+<header th:include="fragments/navbar"></header>
+
+<main class="container mt-4">
+    <h1>Historique des produits conseillés (2024)</h1>
+
+    <div>
+        <a class="btn btn-success" th:href="@{/produits-conseil/ajouter}">Ajouter</a>
+    </div>
+
+    <!-- Tableau -->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Catégorie</th>
+            <th>Parfum</th>
+            <th>Prix de vente</th>
+            <th>Conseil</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="produitConseil : ${produitsConseil}">
+            <td th:text="${produitConseil.produit.nom}"></td>
+            <td th:text="${produitConseil.produit.categorie.nom}"></td>
+            <td th:text="${produitConseil.produit.parfum.nom}"></td>
+            <td th:text="${produitConseil.produit.prixVente}"></td>
+            <td th:text="${produitConseil.description}"></td>
+            <td th:text="${produitConseil.date}"></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+
+<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+
+</body>
+</html>

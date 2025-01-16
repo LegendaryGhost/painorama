@@ -2,7 +2,6 @@ package mg.itu.painorama.controller;
 
 import lombok.AllArgsConstructor;
 import mg.itu.painorama.dto.ProduitConseilRequest;
-import mg.itu.painorama.repository.ProduitConseilRepository;
 import mg.itu.painorama.service.MonthService;
 import mg.itu.painorama.service.ProduitConseilService;
 import mg.itu.painorama.service.ProduitService;
@@ -17,16 +16,13 @@ import java.time.LocalDate;
 @Controller
 public class ProduitConseilController {
 
-    private final ProduitConseilRepository produitConseilRepository;
     private final MonthService monthService;
     private final ProduitService produitService;
     private final ProduitConseilService produitConseilService;
 
     @GetMapping
-    public String listeProduitsConseil(
-	    @RequestParam(value = "mois", required = false) Integer mois,
-	    @RequestParam(value = "annee", required = false) Integer annee,
-	    Model model) {
+    public String listeProduitsConseil(@RequestParam(value = "mois", required = false) Integer mois,
+	    @RequestParam(value = "annee", required = false) Integer annee, Model model) {
 
 	// Définir le mois et l'année actuels si null
 	LocalDate today = LocalDate.now();
@@ -39,6 +35,14 @@ public class ProduitConseilController {
 	model.addAttribute("annee", annee);
 
 	return "produits-conseil/liste";
+    }
+
+    @GetMapping("/historique")
+    public String listeProduitsConseil(Model model) {
+	model.addAttribute("produitsConseil", produitConseilService.findByYear(2024));
+	model.addAttribute("listeMois", monthService.getMonthsInFrench());
+
+	return "produits-conseil/liste-total";
     }
 
     @GetMapping("/ajouter")
