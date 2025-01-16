@@ -79,7 +79,8 @@ VALUES ('Croissant', 2000, 1, 1),          -- Nature
        ('Tarte aux pommes', 4500, 4, 5),   -- Pomme
        ('Mille-feuille', 5000, 4, 4),      -- Vanille
        ('Opéra', 6000, 2, 6),              -- Nature
-       ('Croissant', 2000, 1, 2); -- Chocolat
+       ('Croissant', 2000, 1, 2),          -- Chocolat
+       ('Phare Breton', 2000, 1, 1); -- Nature
 
 INSERT INTO recette (quantite_requise, id_produit, id_ingredient)
 VALUES

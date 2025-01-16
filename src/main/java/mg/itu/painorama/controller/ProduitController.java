@@ -3,6 +3,7 @@ package mg.itu.painorama.controller;
 import lombok.AllArgsConstructor;
 import mg.itu.painorama.entity.Produit;
 import mg.itu.painorama.service.CategorieService;
+import mg.itu.painorama.service.ParfumService;
 import mg.itu.painorama.service.ProduitService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ public class ProduitController {
 
     private final ProduitService produitService;
     private final CategorieService categorieService;
+    private final ParfumService parfumService;
 
     @GetMapping
     public String listeProduits(Model model) {
@@ -26,6 +28,7 @@ public class ProduitController {
     public String ajouterProduit(Model model) {
         model.addAttribute("produit", new Produit());
         model.addAttribute("categories", categorieService.findAll());
+        model.addAttribute("parfums", parfumService.findAll());
         model.addAttribute("titrePage", "Ajouter un produit");
         model.addAttribute("texteBouton", "Ajouter");
         return "produits/formulaire";
@@ -35,6 +38,7 @@ public class ProduitController {
     public String modifierProduit(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("produit", produitService.findById(id));
         model.addAttribute("categories", categorieService.findAll());
+        model.addAttribute("parfums", parfumService.findAll());
         model.addAttribute("titrePage", "Modifier un produit");
         model.addAttribute("texteBouton", "Modifier");
         return "produits/formulaire";

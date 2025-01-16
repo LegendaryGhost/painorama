@@ -31,6 +31,12 @@
                 <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.nom}"></option>
             </select>
         </div>
+        <div class="mb-3">
+            <label for="parfum" class="form-label">Parfum</label>
+            <select class="form-select" name="parfum" id="parfum" th:field="*{parfum}" required>
+                <option th:each="parfum : ${parfums}" th:value="${parfum.id}" th:text="${parfum.nom}"></option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary" th:text="${texteBouton}"></button>
     </form>
 </main>
