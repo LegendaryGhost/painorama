@@ -30,7 +30,7 @@ public class IngredientController {
     @GetMapping("/fiche/{id}")
     public String ficheIngredient(@PathVariable("id") Integer id, Model model) {
 	Ingredient ingredient = ingredientService.findById(id);
-	List<MouvementStock> mouvements = mouvementStockService.findByIngredientId(id);
+	List<MouvementStock> mouvements = mouvementStockService.findByIdIngredient(id);
 
 	model.addAttribute("ingredient", ingredient);
 	model.addAttribute("mouvements", mouvements);

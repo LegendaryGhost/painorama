@@ -2,6 +2,7 @@ package mg.itu.painorama.repository;
 
 import mg.itu.painorama.entity.Ingredient;
 import mg.itu.painorama.entity.MouvementStock;
+import mg.itu.painorama.entity.Produit;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -10,4 +11,5 @@ public interface MouvementStockRepository extends JpaRepository<MouvementStock, 
 
     List<MouvementStock> findByIngredientOrderByDateHeureDesc(Ingredient ingredient);
 
+    List<MouvementStock> findByProduitOrderByDateHeureDesc(Produit produit);
 }

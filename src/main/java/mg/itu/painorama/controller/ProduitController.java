@@ -2,9 +2,7 @@ package mg.itu.painorama.controller;
 
 import lombok.AllArgsConstructor;
 import mg.itu.painorama.entity.Produit;
-import mg.itu.painorama.service.CategorieService;
-import mg.itu.painorama.service.ParfumService;
-import mg.itu.painorama.service.ProduitService;
+import mg.itu.painorama.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +15,8 @@ public class ProduitController {
     private final ProduitService produitService;
     private final CategorieService categorieService;
     private final ParfumService parfumService;
+    private final MouvementStockService mouvementStockService;
+    private final RecetteService recetteService;
 
     @GetMapping
     public String listeProduits(Model model) {
@@ -55,9 +55,17 @@ public class ProduitController {
     }
 
     @GetMapping("/effacer/{id}")
-    public String effacerProduit(@PathVariable Integer id) {
+    public String effacerProduit(@PathVariable("id") Integer id) {
         produitService.delete(id);
         return "redirect:/produits";
+    }
+
+    @GetMapping("/fiche/{id}")
+    public String ficheProduit(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("produit", produitService.findById(id));
+        model.addAttribute("mouvements", mouvementStockService.findByIdProduit(id));
+        model.addAttribute("recettes", recetteService.findByIdProduit(id));
+        return "produits/fiche";
     }
 
 }

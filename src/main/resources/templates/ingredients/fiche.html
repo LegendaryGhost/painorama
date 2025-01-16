@@ -32,14 +32,14 @@
             </div>
 
             <!-- Historique des mouvements de stock -->
-            <h5 class="mt-4">Historique des mouvements</h5>
+            <h5 class="mt-4">Historique des mouvements stock</h5>
             <table class="table table-striped">
                 <thead>
                 <tr>
                     <th>Date et heure</th>
                     <th>Entrée</th>
                     <th>Sortie</th>
-                    <th>Produit ou ingrédient associé</th>
+                    <th>Ingrédient associé</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,7 +48,6 @@
                     <td th:text="${mouvement.quantiteEntree}"></td>
                     <td th:text="${mouvement.quantiteSortie}"></td>
                     <td>
-                        <span th:if="${mouvement.produit != null}" th:text="${mouvement.produit.nom}"></span>
                         <span th:if="${mouvement.ingredient != null}" th:text="${mouvement.ingredient.nom}"></span>
                     </td>
                 </tr>
