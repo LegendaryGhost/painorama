@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Liste des clients acheteurs</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+</head>
+<body>
+
+<header th:include="fragments/navbar"></header>
+
+<main class="container mt-4">
+    <h1>Liste des clients acheteurs</h1>
+
+    <!-- Formulaire de filtre -->
+    <form class="row mb-3" th:action="@{/clients/acheteurs}" method="get">
+        <div class="col-md-3">
+            <label for="dateVente" class="form-label">Date de vente</label>
+            <input type="date" id="dateVente" name="dateVente"
+                   th:value="${dateVente}" class="form-control"
+                   required>
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary">Filtrer</button>
+        </div>
+    </form>
+
+    <div>
+        <a class="btn btn-success" th:href="@{/ventes/ajouter}">Ajouter</a>
+    </div>
+
+    <!-- Tableau -->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Date de naissance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client : ${clients}">
+            <td th:text="${client.nom}"></td>
+            <td th:text="${client.prenom}"></td>
+            <td th:text="${client.dateNaissance}"></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+
+<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+
+</body>
+</html>
