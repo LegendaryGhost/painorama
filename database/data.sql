@@ -153,18 +153,8 @@ VALUES ('2025-01-01 08:00:00', 100, 1, 2), -- 100 Croissants, statut "Terminée"
        ('2025-01-03 14:00:00', 50, 5, 3),  -- 50 Éclairs au chocolat, statut "Annulée"
        ('2025-01-04 11:30:00', 60, 6, 2),  -- 60 Tartes aux pommes, statut "Terminée"
        ('2025-01-05 16:45:00', 30, 7, 1),  -- 30 Mille-feuilles, statut "En cours"
-       ('2025-01-06 18:20:00', 20, 8, 2); -- 20 Opéras, statut "Terminée"
-
-INSERT INTO vente (quantite, date_heure, id_produit)
-VALUES (10, '2025-01-01 10:30:00', 1), -- Vente de croissants
-       (5, '2025-01-02 12:15:00', 2),  -- Vente de pains au chocolat
-       (20, '2025-01-03 09:45:00', 3), -- Vente de baguettes
-       (8, '2025-01-03 10:00:00', 4),  -- Vente de pains complets
-       (6, '2025-01-04 15:20:00', 5),  -- Vente d'éclairs au chocolat
-       (3, '2025-01-05 14:10:00', 6),  -- Vente de tartes aux pommes
-       (4, '2025-01-06 16:00:00', 7),  -- Vente de mille-feuilles
-       (2, '2025-01-07 18:30:00', 8),  -- Vente d'opéras
-       (20, '2025-01-01 10:30:00', 9); -- Vente de croissants au chocolat
+       ('2025-01-06 18:20:00', 20, 8, 2);
+-- 20 Opéras, statut "Terminée"
 
 INSERT INTO produit_conseil (date_conseil, description, id_produit)
 VALUES ('2025-01-01', 'Produit de saison hivernale, parfait pour accompagner un chocolat chaud.',
@@ -202,5 +192,32 @@ VALUES ('2024-01-01', 'Produit de saison hivernale, parfait pour accompagner un 
        ('2024-06-01', 'Produit phare pour les pique-niques d’été.', 6),                                -- Tarte aux pommes
        ('2024-09-01', 'Retour des saveurs classiques pour la rentrée.', 7),                            -- Mille-feuille
        ('2024-10-01', 'Parfait pour accompagner le café pendant l’automne.', 8),                       -- Opéra
-       ('2024-12-01', 'Produit festif au chocolat, très demandé en décembre.', 9); -- Croissant Chocolat
+       ('2024-12-01', 'Produit festif au chocolat, très demandé en décembre.', 9);
+-- Croissant Chocolat
 
+-- Insertion de données dans la table client
+INSERT INTO client (nom, prenom, date_naissance)
+VALUES ('Ramanantsoa', 'Andry', '1990-03-15'),
+       ('Rakotomalala', 'Miora', '1985-07-20'),
+       ('Randrianarison', 'Tina', '1992-01-30'),
+       ('Rasolonirina', 'Hery', '1988-09-12'),
+       ('Andriambelo', 'Feno', '1995-05-23'),
+       ('Razanakoto', 'Hanta', '1983-11-05'),
+       ('Ravelomanana', 'Malala', '1996-06-18'),
+       ('Rakotoarisoa', 'Tahiry', '1991-02-14'),
+       ('Rasoamampionona', 'Fara', '1993-08-09');
+
+-- Mise à jour des ventes pour inclure id_client
+INSERT INTO vente (quantite, date_heure, id_produit, id_client)
+VALUES (10, '2025-01-01 10:30:00', 1, 1), -- Vente pour Ramanantsoa Andry
+       (5, '2025-01-02 12:15:00', 2, 2),  -- Vente pour Rakotomalala Miora
+       (20, '2025-01-03 09:45:00', 3, 3), -- Vente pour Randrianarison Tina
+       (8, '2025-01-03 10:00:00', 4, 4),  -- Vente pour Rasolonirina Hery
+       (6, '2025-01-04 15:20:00', 5, 5),  -- Vente pour Andriambelo Feno
+       (3, '2025-01-05 14:10:00', 6, 6),  -- Vente pour Razanakoto Hanta
+       (4, '2025-01-06 16:00:00', 7, 7),  -- Vente pour Ravelomanana Malala
+       (2, '2025-01-07 18:30:00', 8, 8),  -- Vente pour Rakotoarisoa Tahiry
+       (20, '2025-01-01 10:30:00', 9, 9), -- Vente pour Rasoamampionona Fara
+       (12, '2025-01-16 08:45:00', 1, 1), -- Vente pour Ramanantsoa Andry (Croissants)
+       (7, '2025-01-16 09:30:00', 3, 3),  -- Vente pour Randrianarison Tina (Baguettes)
+       (5, '2025-01-16 10:15:00', 4, 4); -- Vente pour Rasolonirina Hery (Pains complets)

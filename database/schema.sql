@@ -58,6 +58,15 @@ CREATE TABLE parfum
     UNIQUE (nom)
 );
 
+CREATE TABLE client
+(
+    id_client      SERIAL,
+    nom            VARCHAR(255) NOT NULL,
+    prenom         VARCHAR(255),
+    date_naissance DATE         NOT NULL,
+    PRIMARY KEY (id_client)
+);
+
 CREATE TABLE produit
 (
     id_produit   SERIAL,
@@ -121,7 +130,9 @@ CREATE TABLE vente
     id_vente   SERIAL,
     quantite   INTEGER   NOT NULL,
     date_heure TIMESTAMP NOT NULL,
+    id_client  INTEGER   NOT NULL,
     id_produit INTEGER   NOT NULL,
     PRIMARY KEY (id_vente),
+    FOREIGN KEY (id_client) REFERENCES client (id_client),
     FOREIGN KEY (id_produit) REFERENCES produit (id_produit)
 );
